@@ -1,0 +1,20 @@
+﻿@model IEnumerable<tartIsh.Models.BanType>
+@{
+    ViewBag.Title = "Kullanıcıyı Yasakla";
+    Layout = "~/Views/Shared/_AdminContent.cshtml";
+}
+
+
+<form method="post">
+    <input type="hidden" value="@ViewBag.User.Id"  name="userId"/>   <br>   
+    <b>Yasaklanacak Kullanıcı:</b> <label> @ViewBag.User.UserName</label><br />
+    <label>Sebebi</label>
+    <select name="reason">
+    @foreach (var item in Model)
+    {
+        <option value="@item.Id">@item.Reason</option>
+    }
+    </select><br><br>
+    <input type="submit" value="Yasakla" />
+</form>
+

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5ac41b68534c48068831f27a8bfd9faa" Name="Diagram1">
+        <EntityTypeShape EntityType="tartIshModel.AdminTask" Width="1.5" PointX="5.25" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.BanType" Width="1.5" PointX="6" PointY="54.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.Category" Width="1.5" PointX="8.25" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.Chat" Width="1.5" PointX="5.25" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.ChatMessage" Width="1.5" PointX="7.5" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.DeletedMessage" Width="1.5" PointX="5.25" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.Document" Width="1.5" PointX="13.75" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.Hobby" Width="1.5" PointX="3" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.Mastery" Width="1.5" PointX="8.25" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.NotificationUser" Width="1.5" PointX="5.25" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.PersonComplaint" Width="1.5" PointX="5.25" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.Poll" Width="1.5" PointX="12.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.PollOption" Width="1.5" PointX="15" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.Premium" Width="1.5" PointX="5.25" PointY="42" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.PremiumUser" Width="1.5" PointX="5.25" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.Rating" Width="1.5" PointX="5.25" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.RoomComplaint" Width="1.5" PointX="12.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.RoomVote" Width="1.5" PointX="15" PointY="40.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.RoomVote1" Width="1.5" PointX="12.75" PointY="44.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.Rosette" Width="1.5" PointX="9" PointY="45.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.Suggestion" Width="1.5" PointX="5.25" PointY="51.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.TartIshRoom" Width="1.5" PointX="10.5" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.TartIshSection" Width="1.5" PointX="3" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.TartIshStatu" Width="1.5" PointX="10.5" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.TartIshUser" Width="1.5" PointX="3" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.UserBan" Width="1.5" PointX="8.25" PointY="42.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.UserHoby" Width="1.5" PointX="5.25" PointY="33.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.UserMessage" Width="1.5" PointX="5.25" PointY="60.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.UserRosette" Width="1.5" PointX="11.25" PointY="38" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.UserSelectedPoll" Width="1.5" PointX="17.25" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.UserStatu" Width="1.5" PointX="12.75" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.UserSubscriber" Width="1.5" PointX="5.25" PointY="66.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.UserType" Width="1.5" PointX="0.75" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="tartIshModel.UserWatchedRoom" Width="1.5" PointX="17.75" PointY="34.375" IsExpanded="true" />
+        <AssociationConnector Association="tartIshModel.F_AdminTask" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_UserBan2" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_Mastery" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_TartIshRoom" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_Chat" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_ChatMessage3" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_TartIshRoom2" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_ChatMessage" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_DeletedMessages" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_DeletedMessages2" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_Document" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_Document2" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_UserHobies" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_Mastery2" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_NotificationUser" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_PersonComplaint" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_PersonComplaint2" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_Poll" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_PollOption" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_UserSelectedPoll2" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_Premium" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_PremiumUser" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_Rating" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_Rating2" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_Rating3" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_Rating4" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_RoomComplaint" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_RoomVote" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_RoomVote2" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_RoomVote3" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_RoomVotes" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_UserRosette3" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_Suggestion" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_TartIshRoom3" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_TartIshRoom4" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_TartIshRoom5" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_TartIshRoom6" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_UserStatus2" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_UserWatchedRoo2m" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_Section" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_UserStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_TartIshUser" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_UserBan" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_UserHobies2" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_UserMessage" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_UserMessage2" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_UserRosette" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_UserRosette2" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_UserSelectedPoll" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_UserSubscriber" ManuallyRouted="false" />
+        <AssociationConnector Association="tartIshModel.F_UserWatchedRoom" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

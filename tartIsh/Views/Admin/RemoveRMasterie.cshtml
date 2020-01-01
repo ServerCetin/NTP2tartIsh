@@ -1,0 +1,19 @@
+﻿@model tartIsh.Models.TartIshUser
+@{
+    ViewBag.Title = "RemoveRMasterie";
+    Layout = "~/Views/Shared/_AdminContent.cshtml";
+}
+
+<form method="post">
+    <input type="hidden" value="@Model.Id" name="id">
+    <label>Kullanıcı Adı:</label> @Model.UserName
+    <select name="masterie">
+    <option value="0">...Seçiniz...</option>
+    @foreach (var item in Model.Masteries)
+    {
+        <option value="@item.Id">@item.Category.CategoryName</option>
+    }
+     </select><br>
+    <input type="submit" value="Kaldır" />
+</form>
+

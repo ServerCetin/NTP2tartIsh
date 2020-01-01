@@ -1,0 +1,2923 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="tartIshModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Task" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" />
+          <Property Name="LastDate" Type="datetime" />
+          <Property Name="Progress" Type="int" />
+        </EntityType>
+        <EntityType Name="BanType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="BanDuration" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryDescription" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Chat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModeratorId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChatMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SenderId" Type="int" Nullable="false" />
+          <Property Name="ChatMessageText" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChatId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" Nullable="false" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DeletedMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SenderId" Type="int" Nullable="false" />
+          <Property Name="ReceiverId" Type="int" Nullable="false" />
+          <Property Name="MessageText" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" Nullable="false" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SenderId" Type="int" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" Nullable="false" />
+          <Property Name="DocumentUrl" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="DocumentType" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="TartIshRoomId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hobby">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HobbyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HobbyDescription" Type="nvarchar" MaxLength="150" />
+          <Property Name="HobbyImg" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Mastery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CategoryWins" Type="int" Nullable="false" />
+          <Property Name="CategoryMatchingCount" Type="int" Nullable="false" />
+          <Property Name="LastMatch" Type="datetime" />
+          <Property Name="LastOwnedDate" Type="datetime" />
+          <Property Name="Rates" Type="float" Nullable="false" />
+          <Property Name="IsPassive" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotificationUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="300" />
+          <Property Name="SentDate" Type="datetime" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonComplaint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SenderId" Type="int" Nullable="false" />
+          <Property Name="ComplaintedId" Type="int" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Poll">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TartIshRoomId" Type="int" Nullable="false" />
+          <Property Name="PollQuestion" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="PollWinnerPollId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PollOption">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PoolTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PoolId" Type="int" Nullable="false" />
+          <Property Name="VoteCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Premium">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="PremiumDate" Type="datetime" Nullable="false" />
+          <Property Name="PremiumEndDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremiumUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FirstPremiumDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedPremiumDate" Type="datetime" Nullable="false" />
+          <Property Name="OwnedPremiumCount" Type="int" Nullable="false" />
+          <Property Name="PremiumStreak" Type="int" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="SenderId" Type="int" Nullable="false" />
+          <Property Name="ReceiverId" Type="int" Nullable="false" />
+          <Property Name="RatingValue" Type="float" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="IsPassive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoomComplaint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="SenderId" Type="int" Nullable="false" />
+          <Property Name="TartIshRoomId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoomVote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomVotesId" Type="int" Nullable="false" />
+          <Property Name="SenderId" Type="int" Nullable="false" />
+          <Property Name="VotedId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoomVotes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomId" Type="int" Nullable="false" />
+          <Property Name="RoomOwnerVotesCount" Type="int" Nullable="false" />
+          <Property Name="RivalVotesCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rosette">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RosetteName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RosetteImg" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Suggestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SenderId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="SuggestionText" Type="nvarchar" MaxLength="400" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TartIshRoom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoomDescription" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="ViewersCount" Type="int" Nullable="false" />
+          <Property Name="RoomCreatorId" Type="int" Nullable="false" />
+          <Property Name="RivalId" Type="int" />
+          <Property Name="RoomImageUrl" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ChatId" Type="int" />
+          <Property Name="RoomStartDate" Type="datetime" Nullable="false" />
+          <Property Name="RoomFinishDate" Type="datetime" />
+          <Property Name="WinnerId" Type="int" />
+          <Property Name="IsRoomPrivate" Type="bit" Nullable="false" />
+          <Property Name="IsRunAway" Type="bit" />
+          <Property Name="IsPassive" Type="bit" />
+          <Property Name="IsFinished" Type="bit" />
+          <Property Name="RunawayId" Type="int" />
+        </EntityType>
+        <EntityType Name="TartIshSection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SectionName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ViewerTypeId" Type="int" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TartIshStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TartIshUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="Sex" Type="bit" Nullable="false" />
+          <Property Name="UserPassword" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="TotalActiveteMinutes" Type="int" Nullable="false" />
+          <Property Name="ProfileImage" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsPassive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="IsBanned" Type="bit" Nullable="false" />
+          <Property Name="LastLogIn" Type="datetime" />
+          <Property Name="RegisterDate" Type="datetime" />
+          <Property Name="PassiveDate" Type="datetime" />
+          <Property Name="DeleteDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserBan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="BanTypeId" Type="int" Nullable="false" />
+          <Property Name="LastDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserHobies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="HobbyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SenderId" Type="int" Nullable="false" />
+          <Property Name="ReceiverId" Type="int" Nullable="false" />
+          <Property Name="MessageText" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserRosette">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RosetteId" Type="int" Nullable="false" />
+          <Property Name="OwnedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsPassive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSelectedPoll">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="PoolOptionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TartIshStatusId" Type="int" Nullable="false" />
+          <Property Name="TartIshRoomId" Type="int" />
+          <Property Name="StatusStartDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSubscriber">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubscriberId" Type="int" Nullable="false" />
+          <Property Name="SubscribedId" Type="int" Nullable="false" />
+          <Property Name="SubscriptionDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserWatchedRoom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="TartIshRoomId" Type="int" Nullable="false" />
+          <Property Name="WatchedDuration" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="F_AdminTask">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="0..1" />
+          <End Role="AdminTask" Type="Self.AdminTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdminTask">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Chat">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Chat">
+              <PropertyRef Name="ModeratorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_ChatMessage">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="ChatMessage" Type="Self.ChatMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChatMessage">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_ChatMessage3">
+          <End Role="Chat" Type="Self.Chat" Multiplicity="1" />
+          <End Role="ChatMessage" Type="Self.ChatMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChatMessage">
+              <PropertyRef Name="ChatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_DeletedMessages">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="DeletedMessages" Type="Self.DeletedMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeletedMessages">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_DeletedMessages2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="DeletedMessages" Type="Self.DeletedMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeletedMessages">
+              <PropertyRef Name="ReceiverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Document">
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="1" />
+          <End Role="Document" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="TartIshRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Document2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Document" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Mastery">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Mastery" Type="Self.Mastery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mastery">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Mastery2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Mastery" Type="Self.Mastery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mastery">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_NotificationUser">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="NotificationUser" Type="Self.NotificationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotificationUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_PersonComplaint">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="PersonComplaint" Type="Self.PersonComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonComplaint">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_PersonComplaint2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="PersonComplaint" Type="Self.PersonComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonComplaint">
+              <PropertyRef Name="ComplaintedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Poll">
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="1" />
+          <End Role="Poll" Type="Self.Poll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Poll">
+              <PropertyRef Name="TartIshRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_PollOption">
+          <End Role="Poll" Type="Self.Poll" Multiplicity="1" />
+          <End Role="PollOption" Type="Self.PollOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poll">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PollOption">
+              <PropertyRef Name="PoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Premium">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Premium" Type="Self.Premium" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Premium">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_PremiumUser">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="PremiumUser" Type="Self.PremiumUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PremiumUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Rating">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Rating2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Rating3">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="ReceiverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Rating4">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="ReceiverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_RoomComplaint">
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="1" />
+          <End Role="RoomComplaint" Type="Self.RoomComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoomComplaint">
+              <PropertyRef Name="TartIshRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_RoomVote">
+          <End Role="RoomVotes" Type="Self.RoomVotes" Multiplicity="1" />
+          <End Role="RoomVote" Type="Self.RoomVote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomVotes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoomVote">
+              <PropertyRef Name="RoomVotesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_RoomVote2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="RoomVote" Type="Self.RoomVote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoomVote">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_RoomVote3">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="RoomVote" Type="Self.RoomVote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoomVote">
+              <PropertyRef Name="VotedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_RoomVotes">
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="1" />
+          <End Role="RoomVotes" Type="Self.RoomVotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoomVotes">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Section">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="TartIshSection" Type="Self.TartIshSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TartIshSection">
+              <PropertyRef Name="ViewerTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Suggestion">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Suggestion" Type="Self.Suggestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Suggestion">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_TartIshRoom">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TartIshRoom">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_TartIshRoom2">
+          <End Role="Chat" Type="Self.Chat" Multiplicity="0..1" />
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TartIshRoom">
+              <PropertyRef Name="ChatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_TartIshRoom3">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TartIshRoom">
+              <PropertyRef Name="RoomCreatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_TartIshRoom4">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="0..1" />
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TartIshRoom">
+              <PropertyRef Name="RivalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_TartIshRoom5">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="0..1" />
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TartIshRoom">
+              <PropertyRef Name="WinnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_TartIshRoom6">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="0..1" />
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TartIshRoom">
+              <PropertyRef Name="RunawayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_TartIshUser">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TartIshUser">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserBan">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserBan" Type="Self.UserBan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserBan">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserBan2">
+          <End Role="BanType" Type="Self.BanType" Multiplicity="1" />
+          <End Role="UserBan" Type="Self.UserBan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BanType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserBan">
+              <PropertyRef Name="BanTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserHobies">
+          <End Role="Hobby" Type="Self.Hobby" Multiplicity="1" />
+          <End Role="UserHobies" Type="Self.UserHobies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hobby">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserHobies">
+              <PropertyRef Name="HobbyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserHobies2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserHobies" Type="Self.UserHobies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserHobies">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserMessage">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserMessage" Type="Self.UserMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMessage">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserMessage2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserMessage" Type="Self.UserMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMessage">
+              <PropertyRef Name="ReceiverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserRosette">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserRosette" Type="Self.UserRosette" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRosette">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserRosette2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserRosette" Type="Self.UserRosette" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRosette">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserRosette3">
+          <End Role="Rosette" Type="Self.Rosette" Multiplicity="1" />
+          <End Role="UserRosette" Type="Self.UserRosette" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rosette">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRosette">
+              <PropertyRef Name="RosetteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserSelectedPoll">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserSelectedPoll" Type="Self.UserSelectedPoll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSelectedPoll">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserSelectedPoll2">
+          <End Role="PollOption" Type="Self.PollOption" Multiplicity="1" />
+          <End Role="UserSelectedPoll" Type="Self.UserSelectedPoll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PollOption">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSelectedPoll">
+              <PropertyRef Name="PoolOptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserStatus">
+          <End Role="TartIshStatus" Type="Self.TartIshStatus" Multiplicity="1" />
+          <End Role="UserStatus" Type="Self.UserStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserStatus">
+              <PropertyRef Name="TartIshStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserStatus2">
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="0..1" />
+          <End Role="UserStatus" Type="Self.UserStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserStatus">
+              <PropertyRef Name="TartIshRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserSubscriber">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserSubscriber" Type="Self.UserSubscriber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSubscriber">
+              <PropertyRef Name="SubscriberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserWatchedRoo2m">
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="1" />
+          <End Role="UserWatchedRoom" Type="Self.UserWatchedRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserWatchedRoom">
+              <PropertyRef Name="TartIshRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserWatchedRoom">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserWatchedRoom" Type="Self.UserWatchedRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserWatchedRoom">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tartIshModelStoreContainer">
+          <EntitySet Name="AdminTask" EntityType="Self.AdminTask" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BanType" EntityType="Self.BanType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chat" EntityType="Self.Chat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChatMessage" EntityType="Self.ChatMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeletedMessages" EntityType="Self.DeletedMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hobby" EntityType="Self.Hobby" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mastery" EntityType="Self.Mastery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotificationUser" EntityType="Self.NotificationUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonComplaint" EntityType="Self.PersonComplaint" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Poll" EntityType="Self.Poll" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PollOption" EntityType="Self.PollOption" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Premium" EntityType="Self.Premium" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PremiumUser" EntityType="Self.PremiumUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomComplaint" EntityType="Self.RoomComplaint" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomVote" EntityType="Self.RoomVote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomVotes" EntityType="Self.RoomVotes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rosette" EntityType="Self.Rosette" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suggestion" EntityType="Self.Suggestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TartIshRoom" EntityType="Self.TartIshRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TartIshSection" EntityType="Self.TartIshSection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TartIshStatus" EntityType="Self.TartIshStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TartIshUser" EntityType="Self.TartIshUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserBan" EntityType="Self.UserBan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserHobies" EntityType="Self.UserHobies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMessage" EntityType="Self.UserMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRosette" EntityType="Self.UserRosette" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSelectedPoll" EntityType="Self.UserSelectedPoll" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserStatus" EntityType="Self.UserStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSubscriber" EntityType="Self.UserSubscriber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserWatchedRoom" EntityType="Self.UserWatchedRoom" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="F_AdminTask" Association="Self.F_AdminTask">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="AdminTask" EntitySet="AdminTask" />
+          </AssociationSet>
+          <AssociationSet Name="F_Chat" Association="Self.F_Chat">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="Chat" EntitySet="Chat" />
+          </AssociationSet>
+          <AssociationSet Name="F_ChatMessage" Association="Self.F_ChatMessage">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="ChatMessage" EntitySet="ChatMessage" />
+          </AssociationSet>
+          <AssociationSet Name="F_ChatMessage3" Association="Self.F_ChatMessage3">
+            <End Role="Chat" EntitySet="Chat" />
+            <End Role="ChatMessage" EntitySet="ChatMessage" />
+          </AssociationSet>
+          <AssociationSet Name="F_DeletedMessages" Association="Self.F_DeletedMessages">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="DeletedMessages" EntitySet="DeletedMessages" />
+          </AssociationSet>
+          <AssociationSet Name="F_DeletedMessages2" Association="Self.F_DeletedMessages2">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="DeletedMessages" EntitySet="DeletedMessages" />
+          </AssociationSet>
+          <AssociationSet Name="F_Document" Association="Self.F_Document">
+            <End Role="TartIshRoom" EntitySet="TartIshRoom" />
+            <End Role="Document" EntitySet="Document" />
+          </AssociationSet>
+          <AssociationSet Name="F_Document2" Association="Self.F_Document2">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="Document" EntitySet="Document" />
+          </AssociationSet>
+          <AssociationSet Name="F_Mastery" Association="Self.F_Mastery">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Mastery" EntitySet="Mastery" />
+          </AssociationSet>
+          <AssociationSet Name="F_Mastery2" Association="Self.F_Mastery2">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="Mastery" EntitySet="Mastery" />
+          </AssociationSet>
+          <AssociationSet Name="F_NotificationUser" Association="Self.F_NotificationUser">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="NotificationUser" EntitySet="NotificationUser" />
+          </AssociationSet>
+          <AssociationSet Name="F_PersonComplaint" Association="Self.F_PersonComplaint">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="PersonComplaint" EntitySet="PersonComplaint" />
+          </AssociationSet>
+          <AssociationSet Name="F_PersonComplaint2" Association="Self.F_PersonComplaint2">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="PersonComplaint" EntitySet="PersonComplaint" />
+          </AssociationSet>
+          <AssociationSet Name="F_Poll" Association="Self.F_Poll">
+            <End Role="TartIshRoom" EntitySet="TartIshRoom" />
+            <End Role="Poll" EntitySet="Poll" />
+          </AssociationSet>
+          <AssociationSet Name="F_PollOption" Association="Self.F_PollOption">
+            <End Role="Poll" EntitySet="Poll" />
+            <End Role="PollOption" EntitySet="PollOption" />
+          </AssociationSet>
+          <AssociationSet Name="F_Premium" Association="Self.F_Premium">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="Premium" EntitySet="Premium" />
+          </AssociationSet>
+          <AssociationSet Name="F_PremiumUser" Association="Self.F_PremiumUser">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="PremiumUser" EntitySet="PremiumUser" />
+          </AssociationSet>
+          <AssociationSet Name="F_Rating" Association="Self.F_Rating">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="F_Rating2" Association="Self.F_Rating2">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="F_Rating3" Association="Self.F_Rating3">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="F_Rating4" Association="Self.F_Rating4">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="F_RoomComplaint" Association="Self.F_RoomComplaint">
+            <End Role="TartIshRoom" EntitySet="TartIshRoom" />
+            <End Role="RoomComplaint" EntitySet="RoomComplaint" />
+          </AssociationSet>
+          <AssociationSet Name="F_RoomVote" Association="Self.F_RoomVote">
+            <End Role="RoomVotes" EntitySet="RoomVotes" />
+            <End Role="RoomVote" EntitySet="RoomVote" />
+          </AssociationSet>
+          <AssociationSet Name="F_RoomVote2" Association="Self.F_RoomVote2">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="RoomVote" EntitySet="RoomVote" />
+          </AssociationSet>
+          <AssociationSet Name="F_RoomVote3" Association="Self.F_RoomVote3">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="RoomVote" EntitySet="RoomVote" />
+          </AssociationSet>
+          <AssociationSet Name="F_RoomVotes" Association="Self.F_RoomVotes">
+            <End Role="TartIshRoom" EntitySet="TartIshRoom" />
+            <End Role="RoomVotes" EntitySet="RoomVotes" />
+          </AssociationSet>
+          <AssociationSet Name="F_Section" Association="Self.F_Section">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="TartIshSection" EntitySet="TartIshSection" />
+          </AssociationSet>
+          <AssociationSet Name="F_Suggestion" Association="Self.F_Suggestion">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="Suggestion" EntitySet="Suggestion" />
+          </AssociationSet>
+          <AssociationSet Name="F_TartIshRoom" Association="Self.F_TartIshRoom">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="TartIshRoom" EntitySet="TartIshRoom" />
+          </AssociationSet>
+          <AssociationSet Name="F_TartIshRoom2" Association="Self.F_TartIshRoom2">
+            <End Role="Chat" EntitySet="Chat" />
+            <End Role="TartIshRoom" EntitySet="TartIshRoom" />
+          </AssociationSet>
+          <AssociationSet Name="F_TartIshRoom3" Association="Self.F_TartIshRoom3">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="TartIshRoom" EntitySet="TartIshRoom" />
+          </AssociationSet>
+          <AssociationSet Name="F_TartIshRoom4" Association="Self.F_TartIshRoom4">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="TartIshRoom" EntitySet="TartIshRoom" />
+          </AssociationSet>
+          <AssociationSet Name="F_TartIshRoom5" Association="Self.F_TartIshRoom5">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="TartIshRoom" EntitySet="TartIshRoom" />
+          </AssociationSet>
+          <AssociationSet Name="F_TartIshRoom6" Association="Self.F_TartIshRoom6">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="TartIshRoom" EntitySet="TartIshRoom" />
+          </AssociationSet>
+          <AssociationSet Name="F_TartIshUser" Association="Self.F_TartIshUser">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserBan" Association="Self.F_UserBan">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="UserBan" EntitySet="UserBan" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserBan2" Association="Self.F_UserBan2">
+            <End Role="BanType" EntitySet="BanType" />
+            <End Role="UserBan" EntitySet="UserBan" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserHobies" Association="Self.F_UserHobies">
+            <End Role="Hobby" EntitySet="Hobby" />
+            <End Role="UserHobies" EntitySet="UserHobies" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserHobies2" Association="Self.F_UserHobies2">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="UserHobies" EntitySet="UserHobies" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserMessage" Association="Self.F_UserMessage">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="UserMessage" EntitySet="UserMessage" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserMessage2" Association="Self.F_UserMessage2">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="UserMessage" EntitySet="UserMessage" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserRosette" Association="Self.F_UserRosette">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="UserRosette" EntitySet="UserRosette" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserRosette2" Association="Self.F_UserRosette2">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="UserRosette" EntitySet="UserRosette" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserRosette3" Association="Self.F_UserRosette3">
+            <End Role="Rosette" EntitySet="Rosette" />
+            <End Role="UserRosette" EntitySet="UserRosette" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserSelectedPoll" Association="Self.F_UserSelectedPoll">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="UserSelectedPoll" EntitySet="UserSelectedPoll" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserSelectedPoll2" Association="Self.F_UserSelectedPoll2">
+            <End Role="PollOption" EntitySet="PollOption" />
+            <End Role="UserSelectedPoll" EntitySet="UserSelectedPoll" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserStatus" Association="Self.F_UserStatus">
+            <End Role="TartIshStatus" EntitySet="TartIshStatus" />
+            <End Role="UserStatus" EntitySet="UserStatus" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserStatus2" Association="Self.F_UserStatus2">
+            <End Role="TartIshRoom" EntitySet="TartIshRoom" />
+            <End Role="UserStatus" EntitySet="UserStatus" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserSubscriber" Association="Self.F_UserSubscriber">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="UserSubscriber" EntitySet="UserSubscriber" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserWatchedRoo2m" Association="Self.F_UserWatchedRoo2m">
+            <End Role="TartIshRoom" EntitySet="TartIshRoom" />
+            <End Role="UserWatchedRoom" EntitySet="UserWatchedRoom" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserWatchedRoom" Association="Self.F_UserWatchedRoom">
+            <End Role="TartIshUser" EntitySet="TartIshUser" />
+            <End Role="UserWatchedRoom" EntitySet="UserWatchedRoom" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tartIshModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Task" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeId" Type="Int32" />
+          <Property Name="LastDate" Type="DateTime" Precision="3" />
+          <Property Name="Progress" Type="Int32" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_AdminTask" FromRole="AdminTask" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="BanType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reason" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BanDuration" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserBans" Relationship="Self.F_UserBan2" FromRole="BanType" ToRole="UserBan" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Masteries" Relationship="Self.F_Mastery" FromRole="Category" ToRole="Mastery" />
+          <NavigationProperty Name="TartIshRooms" Relationship="Self.F_TartIshRoom" FromRole="Category" ToRole="TartIshRoom" />
+        </EntityType>
+        <EntityType Name="Chat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModeratorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_Chat" FromRole="Chat" ToRole="TartIshUser" />
+          <NavigationProperty Name="ChatMessages" Relationship="Self.F_ChatMessage3" FromRole="Chat" ToRole="ChatMessage" />
+          <NavigationProperty Name="TartIshRooms" Relationship="Self.F_TartIshRoom2" FromRole="Chat" ToRole="TartIshRoom" />
+        </EntityType>
+        <EntityType Name="ChatMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SenderId" Type="Int32" Nullable="false" />
+          <Property Name="ChatMessageText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ChatId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="SentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Chat" Relationship="Self.F_ChatMessage3" FromRole="ChatMessage" ToRole="Chat" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_ChatMessage" FromRole="ChatMessage" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="DeletedMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SenderId" Type="Int32" Nullable="false" />
+          <Property Name="ReceiverId" Type="Int32" Nullable="false" />
+          <Property Name="MessageText" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_DeletedMessages" FromRole="DeletedMessages" ToRole="TartIshUser" />
+          <NavigationProperty Name="TartIshUser1" Relationship="Self.F_DeletedMessages2" FromRole="DeletedMessages" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SenderId" Type="Int32" Nullable="false" />
+          <Property Name="SentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DocumentUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DocumentType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TartIshRoomId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TartIshRoom" Relationship="Self.F_Document" FromRole="Document" ToRole="TartIshRoom" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_Document2" FromRole="Document" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="Hobby">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HobbyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HobbyDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HobbyImg" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserHobies" Relationship="Self.F_UserHobies" FromRole="Hobby" ToRole="UserHobies" />
+        </EntityType>
+        <EntityType Name="Mastery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryWins" Type="Int32" Nullable="false" />
+          <Property Name="CategoryMatchingCount" Type="Int32" Nullable="false" />
+          <Property Name="LastMatch" Type="DateTime" Precision="3" />
+          <Property Name="LastOwnedDate" Type="DateTime" Precision="3" />
+          <Property Name="Rates" Type="Double" Nullable="false" />
+          <Property Name="IsPassive" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.F_Mastery" FromRole="Mastery" ToRole="Category" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_Mastery2" FromRole="Mastery" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="NotificationUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="SentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_NotificationUser" FromRole="NotificationUser" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="PersonComplaint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SenderId" Type="Int32" Nullable="false" />
+          <Property Name="ComplaintedId" Type="Int32" Nullable="false" />
+          <Property Name="Reason" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_PersonComplaint" FromRole="PersonComplaint" ToRole="TartIshUser" />
+          <NavigationProperty Name="TartIshUser1" Relationship="Self.F_PersonComplaint2" FromRole="PersonComplaint" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="Poll">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TartIshRoomId" Type="Int32" Nullable="false" />
+          <Property Name="PollQuestion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PollWinnerPollId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TartIshRoom" Relationship="Self.F_Poll" FromRole="Poll" ToRole="TartIshRoom" />
+          <NavigationProperty Name="PollOptions" Relationship="Self.F_PollOption" FromRole="Poll" ToRole="PollOption" />
+        </EntityType>
+        <EntityType Name="PollOption">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PoolTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PoolId" Type="Int32" Nullable="false" />
+          <Property Name="VoteCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Poll" Relationship="Self.F_PollOption" FromRole="PollOption" ToRole="Poll" />
+          <NavigationProperty Name="UserSelectedPolls" Relationship="Self.F_UserSelectedPoll2" FromRole="PollOption" ToRole="UserSelectedPoll" />
+        </EntityType>
+        <EntityType Name="Premium">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="PremiumDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PremiumEndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_Premium" FromRole="Premium" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="PremiumUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="FirstPremiumDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedPremiumDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OwnedPremiumCount" Type="Int32" Nullable="false" />
+          <Property Name="PremiumStreak" Type="Int32" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_PremiumUser" FromRole="PremiumUser" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="SenderId" Type="Int32" Nullable="false" />
+          <Property Name="ReceiverId" Type="Int32" Nullable="false" />
+          <Property Name="RatingValue" Type="Double" Nullable="false" />
+          <Property Name="Reason" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsPassive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_Rating" FromRole="Rating" ToRole="TartIshUser" />
+          <NavigationProperty Name="TartIshUser1" Relationship="Self.F_Rating2" FromRole="Rating" ToRole="TartIshUser" />
+          <NavigationProperty Name="TartIshUser2" Relationship="Self.F_Rating3" FromRole="Rating" ToRole="TartIshUser" />
+          <NavigationProperty Name="TartIshUser3" Relationship="Self.F_Rating4" FromRole="Rating" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="RoomComplaint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reason" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SenderId" Type="Int32" Nullable="false" />
+          <Property Name="TartIshRoomId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TartIshRoom" Relationship="Self.F_RoomComplaint" FromRole="RoomComplaint" ToRole="TartIshRoom" />
+        </EntityType>
+        <EntityType Name="RoomVote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomVotesId" Type="Int32" Nullable="false" />
+          <Property Name="SenderId" Type="Int32" Nullable="false" />
+          <Property Name="VotedId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RoomVote1" Relationship="Self.F_RoomVote" FromRole="RoomVote" ToRole="RoomVotes" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_RoomVote2" FromRole="RoomVote" ToRole="TartIshUser" />
+          <NavigationProperty Name="TartIshUser1" Relationship="Self.F_RoomVote3" FromRole="RoomVote" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="RoomVote1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomId" Type="Int32" Nullable="false" />
+          <Property Name="RoomOwnerVotesCount" Type="Int32" Nullable="false" />
+          <Property Name="RivalVotesCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RoomVotes" Relationship="Self.F_RoomVote" FromRole="RoomVotes" ToRole="RoomVote" />
+          <NavigationProperty Name="TartIshRoom" Relationship="Self.F_RoomVotes" FromRole="RoomVotes" ToRole="TartIshRoom" />
+        </EntityType>
+        <EntityType Name="Rosette">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RosetteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RosetteImg" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UserRosettes" Relationship="Self.F_UserRosette3" FromRole="Rosette" ToRole="UserRosette" />
+        </EntityType>
+        <EntityType Name="Suggestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SenderId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SuggestionText" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_Suggestion" FromRole="Suggestion" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="TartIshRoom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoomDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="ViewersCount" Type="Int32" Nullable="false" />
+          <Property Name="RoomCreatorId" Type="Int32" Nullable="false" />
+          <Property Name="RivalId" Type="Int32" />
+          <Property Name="RoomImageUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ChatId" Type="Int32" />
+          <Property Name="RoomStartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RoomFinishDate" Type="DateTime" Precision="3" />
+          <Property Name="WinnerId" Type="Int32" />
+          <Property Name="IsRoomPrivate" Type="Boolean" Nullable="false" />
+          <Property Name="IsRunAway" Type="Boolean" />
+          <Property Name="IsPassive" Type="Boolean" />
+          <Property Name="IsFinished" Type="Boolean" />
+          <Property Name="RunawayId" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Self.F_TartIshRoom" FromRole="TartIshRoom" ToRole="Category" />
+          <NavigationProperty Name="Chat" Relationship="Self.F_TartIshRoom2" FromRole="TartIshRoom" ToRole="Chat" />
+          <NavigationProperty Name="Documents" Relationship="Self.F_Document" FromRole="TartIshRoom" ToRole="Document" />
+          <NavigationProperty Name="Polls" Relationship="Self.F_Poll" FromRole="TartIshRoom" ToRole="Poll" />
+          <NavigationProperty Name="RoomComplaints" Relationship="Self.F_RoomComplaint" FromRole="TartIshRoom" ToRole="RoomComplaint" />
+          <NavigationProperty Name="RoomVotes" Relationship="Self.F_RoomVotes" FromRole="TartIshRoom" ToRole="RoomVotes" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_TartIshRoom3" FromRole="TartIshRoom" ToRole="TartIshUser" />
+          <NavigationProperty Name="TartIshUser1" Relationship="Self.F_TartIshRoom4" FromRole="TartIshRoom" ToRole="TartIshUser" />
+          <NavigationProperty Name="TartIshUser2" Relationship="Self.F_TartIshRoom5" FromRole="TartIshRoom" ToRole="TartIshUser" />
+          <NavigationProperty Name="TartIshUser3" Relationship="Self.F_TartIshRoom6" FromRole="TartIshRoom" ToRole="TartIshUser" />
+          <NavigationProperty Name="UserStatus" Relationship="Self.F_UserStatus2" FromRole="TartIshRoom" ToRole="UserStatus" />
+          <NavigationProperty Name="UserWatchedRooms" Relationship="Self.F_UserWatchedRoo2m" FromRole="TartIshRoom" ToRole="UserWatchedRoom" />
+        </EntityType>
+        <EntityType Name="TartIshSection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SectionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ViewerTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserType" Relationship="Self.F_Section" FromRole="TartIshSection" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="TartIshStatu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UserStatus" Relationship="Self.F_UserStatus" FromRole="TartIshStatus" ToRole="UserStatus" />
+        </EntityType>
+        <EntityType Name="TartIshUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="TotalActiveteMinutes" Type="Int32" Nullable="false" />
+          <Property Name="ProfileImage" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsPassive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="IsBanned" Type="Boolean" Nullable="false" />
+          <Property Name="LastLogIn" Type="DateTime" Precision="3" />
+          <Property Name="RegisterDate" Type="DateTime" Precision="3" />
+          <Property Name="PassiveDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AdminTasks" Relationship="Self.F_AdminTask" FromRole="TartIshUser" ToRole="AdminTask" />
+          <NavigationProperty Name="Chats" Relationship="Self.F_Chat" FromRole="TartIshUser" ToRole="Chat" />
+          <NavigationProperty Name="ChatMessages" Relationship="Self.F_ChatMessage" FromRole="TartIshUser" ToRole="ChatMessage" />
+          <NavigationProperty Name="DeletedMessages" Relationship="Self.F_DeletedMessages" FromRole="TartIshUser" ToRole="DeletedMessages" />
+          <NavigationProperty Name="DeletedMessages1" Relationship="Self.F_DeletedMessages2" FromRole="TartIshUser" ToRole="DeletedMessages" />
+          <NavigationProperty Name="Documents" Relationship="Self.F_Document2" FromRole="TartIshUser" ToRole="Document" />
+          <NavigationProperty Name="Masteries" Relationship="Self.F_Mastery2" FromRole="TartIshUser" ToRole="Mastery" />
+          <NavigationProperty Name="NotificationUsers" Relationship="Self.F_NotificationUser" FromRole="TartIshUser" ToRole="NotificationUser" />
+          <NavigationProperty Name="PersonComplaints" Relationship="Self.F_PersonComplaint" FromRole="TartIshUser" ToRole="PersonComplaint" />
+          <NavigationProperty Name="PersonComplaints1" Relationship="Self.F_PersonComplaint2" FromRole="TartIshUser" ToRole="PersonComplaint" />
+          <NavigationProperty Name="Premiums" Relationship="Self.F_Premium" FromRole="TartIshUser" ToRole="Premium" />
+          <NavigationProperty Name="PremiumUsers" Relationship="Self.F_PremiumUser" FromRole="TartIshUser" ToRole="PremiumUser" />
+          <NavigationProperty Name="Ratings" Relationship="Self.F_Rating" FromRole="TartIshUser" ToRole="Rating" />
+          <NavigationProperty Name="Ratings1" Relationship="Self.F_Rating2" FromRole="TartIshUser" ToRole="Rating" />
+          <NavigationProperty Name="Ratings2" Relationship="Self.F_Rating3" FromRole="TartIshUser" ToRole="Rating" />
+          <NavigationProperty Name="Ratings3" Relationship="Self.F_Rating4" FromRole="TartIshUser" ToRole="Rating" />
+          <NavigationProperty Name="RoomVotes" Relationship="Self.F_RoomVote2" FromRole="TartIshUser" ToRole="RoomVote" />
+          <NavigationProperty Name="RoomVotes1" Relationship="Self.F_RoomVote3" FromRole="TartIshUser" ToRole="RoomVote" />
+          <NavigationProperty Name="Suggestions" Relationship="Self.F_Suggestion" FromRole="TartIshUser" ToRole="Suggestion" />
+          <NavigationProperty Name="TartIshRooms" Relationship="Self.F_TartIshRoom3" FromRole="TartIshUser" ToRole="TartIshRoom" />
+          <NavigationProperty Name="TartIshRooms1" Relationship="Self.F_TartIshRoom4" FromRole="TartIshUser" ToRole="TartIshRoom" />
+          <NavigationProperty Name="TartIshRooms2" Relationship="Self.F_TartIshRoom5" FromRole="TartIshUser" ToRole="TartIshRoom" />
+          <NavigationProperty Name="TartIshRooms3" Relationship="Self.F_TartIshRoom6" FromRole="TartIshUser" ToRole="TartIshRoom" />
+          <NavigationProperty Name="UserType" Relationship="Self.F_TartIshUser" FromRole="TartIshUser" ToRole="UserType" />
+          <NavigationProperty Name="UserBans" Relationship="Self.F_UserBan" FromRole="TartIshUser" ToRole="UserBan" />
+          <NavigationProperty Name="UserHobies" Relationship="Self.F_UserHobies2" FromRole="TartIshUser" ToRole="UserHobies" />
+          <NavigationProperty Name="UserMessages" Relationship="Self.F_UserMessage" FromRole="TartIshUser" ToRole="UserMessage" />
+          <NavigationProperty Name="UserMessages1" Relationship="Self.F_UserMessage2" FromRole="TartIshUser" ToRole="UserMessage" />
+          <NavigationProperty Name="UserRosettes" Relationship="Self.F_UserRosette" FromRole="TartIshUser" ToRole="UserRosette" />
+          <NavigationProperty Name="UserRosettes1" Relationship="Self.F_UserRosette2" FromRole="TartIshUser" ToRole="UserRosette" />
+          <NavigationProperty Name="UserSelectedPolls" Relationship="Self.F_UserSelectedPoll" FromRole="TartIshUser" ToRole="UserSelectedPoll" />
+          <NavigationProperty Name="UserSubscribers" Relationship="Self.F_UserSubscriber" FromRole="TartIshUser" ToRole="UserSubscriber" />
+          <NavigationProperty Name="UserWatchedRooms" Relationship="Self.F_UserWatchedRoom" FromRole="TartIshUser" ToRole="UserWatchedRoom" />
+        </EntityType>
+        <EntityType Name="UserBan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BanTypeId" Type="Int32" Nullable="false" />
+          <Property Name="LastDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BanType" Relationship="Self.F_UserBan2" FromRole="UserBan" ToRole="BanType" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_UserBan" FromRole="UserBan" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="UserHoby">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="HobbyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hobby" Relationship="Self.F_UserHobies" FromRole="UserHobies" ToRole="Hobby" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_UserHobies2" FromRole="UserHobies" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="UserMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SenderId" Type="Int32" Nullable="false" />
+          <Property Name="ReceiverId" Type="Int32" Nullable="false" />
+          <Property Name="MessageText" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_UserMessage" FromRole="UserMessage" ToRole="TartIshUser" />
+          <NavigationProperty Name="TartIshUser1" Relationship="Self.F_UserMessage2" FromRole="UserMessage" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="UserRosette">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RosetteId" Type="Int32" Nullable="false" />
+          <Property Name="OwnedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsPassive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Rosette" Relationship="Self.F_UserRosette3" FromRole="UserRosette" ToRole="Rosette" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_UserRosette" FromRole="UserRosette" ToRole="TartIshUser" />
+          <NavigationProperty Name="TartIshUser1" Relationship="Self.F_UserRosette2" FromRole="UserRosette" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="UserSelectedPoll">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="PoolOptionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PollOption" Relationship="Self.F_UserSelectedPoll2" FromRole="UserSelectedPoll" ToRole="PollOption" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_UserSelectedPoll" FromRole="UserSelectedPoll" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="UserStatu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TartIshStatusId" Type="Int32" Nullable="false" />
+          <Property Name="TartIshRoomId" Type="Int32" />
+          <Property Name="StatusStartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TartIshRoom" Relationship="Self.F_UserStatus2" FromRole="UserStatus" ToRole="TartIshRoom" />
+          <NavigationProperty Name="TartIshStatu" Relationship="Self.F_UserStatus" FromRole="UserStatus" ToRole="TartIshStatus" />
+        </EntityType>
+        <EntityType Name="UserSubscriber">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubscriberId" Type="Int32" Nullable="false" />
+          <Property Name="SubscribedId" Type="Int32" Nullable="false" />
+          <Property Name="SubscriptionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_UserSubscriber" FromRole="UserSubscriber" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TartIshSections" Relationship="Self.F_Section" FromRole="UserType" ToRole="TartIshSection" />
+          <NavigationProperty Name="TartIshUsers" Relationship="Self.F_TartIshUser" FromRole="UserType" ToRole="TartIshUser" />
+        </EntityType>
+        <EntityType Name="UserWatchedRoom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="TartIshRoomId" Type="Int32" Nullable="false" />
+          <Property Name="WatchedDuration" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TartIshRoom" Relationship="Self.F_UserWatchedRoo2m" FromRole="UserWatchedRoom" ToRole="TartIshRoom" />
+          <NavigationProperty Name="TartIshUser" Relationship="Self.F_UserWatchedRoom" FromRole="UserWatchedRoom" ToRole="TartIshUser" />
+        </EntityType>
+        <Association Name="F_AdminTask">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="0..1" />
+          <End Role="AdminTask" Type="Self.AdminTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdminTask">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserBan2">
+          <End Role="BanType" Type="Self.BanType" Multiplicity="1" />
+          <End Role="UserBan" Type="Self.UserBan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BanType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserBan">
+              <PropertyRef Name="BanTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Mastery">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Mastery" Type="Self.Mastery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mastery">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_TartIshRoom">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TartIshRoom">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Chat">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Chat">
+              <PropertyRef Name="ModeratorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_ChatMessage3">
+          <End Role="Chat" Type="Self.Chat" Multiplicity="1" />
+          <End Role="ChatMessage" Type="Self.ChatMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChatMessage">
+              <PropertyRef Name="ChatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_TartIshRoom2">
+          <End Role="Chat" Type="Self.Chat" Multiplicity="0..1" />
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TartIshRoom">
+              <PropertyRef Name="ChatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_ChatMessage">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="ChatMessage" Type="Self.ChatMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChatMessage">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_DeletedMessages">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="DeletedMessages" Type="Self.DeletedMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeletedMessages">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_DeletedMessages2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="DeletedMessages" Type="Self.DeletedMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeletedMessages">
+              <PropertyRef Name="ReceiverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Document">
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="1" />
+          <End Role="Document" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="TartIshRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Document2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Document" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserHobies">
+          <End Role="Hobby" Type="Self.Hobby" Multiplicity="1" />
+          <End Role="UserHobies" Type="Self.UserHoby" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hobby">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserHobies">
+              <PropertyRef Name="HobbyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Mastery2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Mastery" Type="Self.Mastery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mastery">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_NotificationUser">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="NotificationUser" Type="Self.NotificationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotificationUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_PersonComplaint">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="PersonComplaint" Type="Self.PersonComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonComplaint">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_PersonComplaint2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="PersonComplaint" Type="Self.PersonComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonComplaint">
+              <PropertyRef Name="ComplaintedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Poll">
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="1" />
+          <End Role="Poll" Type="Self.Poll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Poll">
+              <PropertyRef Name="TartIshRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_PollOption">
+          <End Role="Poll" Type="Self.Poll" Multiplicity="1" />
+          <End Role="PollOption" Type="Self.PollOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poll">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PollOption">
+              <PropertyRef Name="PoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserSelectedPoll2">
+          <End Role="PollOption" Type="Self.PollOption" Multiplicity="1" />
+          <End Role="UserSelectedPoll" Type="Self.UserSelectedPoll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PollOption">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSelectedPoll">
+              <PropertyRef Name="PoolOptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Premium">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Premium" Type="Self.Premium" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Premium">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_PremiumUser">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="PremiumUser" Type="Self.PremiumUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PremiumUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Rating">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Rating2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Rating3">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="ReceiverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Rating4">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="ReceiverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_RoomComplaint">
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="1" />
+          <End Role="RoomComplaint" Type="Self.RoomComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoomComplaint">
+              <PropertyRef Name="TartIshRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_RoomVote">
+          <End Role="RoomVotes" Type="Self.RoomVote1" Multiplicity="1" />
+          <End Role="RoomVote" Type="Self.RoomVote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomVotes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoomVote">
+              <PropertyRef Name="RoomVotesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_RoomVote2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="RoomVote" Type="Self.RoomVote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoomVote">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_RoomVote3">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="RoomVote" Type="Self.RoomVote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoomVote">
+              <PropertyRef Name="VotedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_RoomVotes">
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="1" />
+          <End Role="RoomVotes" Type="Self.RoomVote1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoomVotes">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserRosette3">
+          <End Role="Rosette" Type="Self.Rosette" Multiplicity="1" />
+          <End Role="UserRosette" Type="Self.UserRosette" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rosette">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRosette">
+              <PropertyRef Name="RosetteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Suggestion">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="Suggestion" Type="Self.Suggestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Suggestion">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_TartIshRoom3">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TartIshRoom">
+              <PropertyRef Name="RoomCreatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_TartIshRoom4">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="0..1" />
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TartIshRoom">
+              <PropertyRef Name="RivalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_TartIshRoom5">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="0..1" />
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TartIshRoom">
+              <PropertyRef Name="WinnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_TartIshRoom6">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="0..1" />
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TartIshRoom">
+              <PropertyRef Name="RunawayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserStatus2">
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="0..1" />
+          <End Role="UserStatus" Type="Self.UserStatu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserStatus">
+              <PropertyRef Name="TartIshRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserWatchedRoo2m">
+          <End Role="TartIshRoom" Type="Self.TartIshRoom" Multiplicity="1" />
+          <End Role="UserWatchedRoom" Type="Self.UserWatchedRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserWatchedRoom">
+              <PropertyRef Name="TartIshRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_Section">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="TartIshSection" Type="Self.TartIshSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TartIshSection">
+              <PropertyRef Name="ViewerTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserStatus">
+          <End Role="TartIshStatus" Type="Self.TartIshStatu" Multiplicity="1" />
+          <End Role="UserStatus" Type="Self.UserStatu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserStatus">
+              <PropertyRef Name="TartIshStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_TartIshUser">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TartIshUser">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserBan">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserBan" Type="Self.UserBan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserBan">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserHobies2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserHobies" Type="Self.UserHoby" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserHobies">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserMessage">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserMessage" Type="Self.UserMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMessage">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserMessage2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserMessage" Type="Self.UserMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMessage">
+              <PropertyRef Name="ReceiverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserRosette">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserRosette" Type="Self.UserRosette" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRosette">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserRosette2">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserRosette" Type="Self.UserRosette" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRosette">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserSelectedPoll">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserSelectedPoll" Type="Self.UserSelectedPoll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSelectedPoll">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserSubscriber">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserSubscriber" Type="Self.UserSubscriber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSubscriber">
+              <PropertyRef Name="SubscriberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="F_UserWatchedRoom">
+          <End Role="TartIshUser" Type="Self.TartIshUser" Multiplicity="1" />
+          <End Role="UserWatchedRoom" Type="Self.UserWatchedRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TartIshUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserWatchedRoom">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tartIshEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminTasks" EntityType="Self.AdminTask" />
+          <EntitySet Name="BanTypes" EntityType="Self.BanType" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Chats" EntityType="Self.Chat" />
+          <EntitySet Name="ChatMessages" EntityType="Self.ChatMessage" />
+          <EntitySet Name="DeletedMessages" EntityType="Self.DeletedMessage" />
+          <EntitySet Name="Documents" EntityType="Self.Document" />
+          <EntitySet Name="Hobbies" EntityType="Self.Hobby" />
+          <EntitySet Name="Masteries" EntityType="Self.Mastery" />
+          <EntitySet Name="NotificationUsers" EntityType="Self.NotificationUser" />
+          <EntitySet Name="PersonComplaints" EntityType="Self.PersonComplaint" />
+          <EntitySet Name="Polls" EntityType="Self.Poll" />
+          <EntitySet Name="PollOptions" EntityType="Self.PollOption" />
+          <EntitySet Name="Premiums" EntityType="Self.Premium" />
+          <EntitySet Name="PremiumUsers" EntityType="Self.PremiumUser" />
+          <EntitySet Name="Ratings" EntityType="Self.Rating" />
+          <EntitySet Name="RoomComplaints" EntityType="Self.RoomComplaint" />
+          <EntitySet Name="RoomVotes" EntityType="Self.RoomVote" />
+          <EntitySet Name="RoomVotes1" EntityType="Self.RoomVote1" />
+          <EntitySet Name="Rosettes" EntityType="Self.Rosette" />
+          <EntitySet Name="Suggestions" EntityType="Self.Suggestion" />
+          <EntitySet Name="TartIshRooms" EntityType="Self.TartIshRoom" />
+          <EntitySet Name="TartIshSections" EntityType="Self.TartIshSection" />
+          <EntitySet Name="TartIshStatus" EntityType="Self.TartIshStatu" />
+          <EntitySet Name="TartIshUsers" EntityType="Self.TartIshUser" />
+          <EntitySet Name="UserBans" EntityType="Self.UserBan" />
+          <EntitySet Name="UserHobies" EntityType="Self.UserHoby" />
+          <EntitySet Name="UserMessages" EntityType="Self.UserMessage" />
+          <EntitySet Name="UserRosettes" EntityType="Self.UserRosette" />
+          <EntitySet Name="UserSelectedPolls" EntityType="Self.UserSelectedPoll" />
+          <EntitySet Name="UserStatus" EntityType="Self.UserStatu" />
+          <EntitySet Name="UserSubscribers" EntityType="Self.UserSubscriber" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <EntitySet Name="UserWatchedRooms" EntityType="Self.UserWatchedRoom" />
+          <AssociationSet Name="F_AdminTask" Association="Self.F_AdminTask">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="AdminTask" EntitySet="AdminTasks" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserBan2" Association="Self.F_UserBan2">
+            <End Role="BanType" EntitySet="BanTypes" />
+            <End Role="UserBan" EntitySet="UserBans" />
+          </AssociationSet>
+          <AssociationSet Name="F_Mastery" Association="Self.F_Mastery">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Mastery" EntitySet="Masteries" />
+          </AssociationSet>
+          <AssociationSet Name="F_TartIshRoom" Association="Self.F_TartIshRoom">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="TartIshRoom" EntitySet="TartIshRooms" />
+          </AssociationSet>
+          <AssociationSet Name="F_Chat" Association="Self.F_Chat">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="Chat" EntitySet="Chats" />
+          </AssociationSet>
+          <AssociationSet Name="F_ChatMessage3" Association="Self.F_ChatMessage3">
+            <End Role="Chat" EntitySet="Chats" />
+            <End Role="ChatMessage" EntitySet="ChatMessages" />
+          </AssociationSet>
+          <AssociationSet Name="F_TartIshRoom2" Association="Self.F_TartIshRoom2">
+            <End Role="Chat" EntitySet="Chats" />
+            <End Role="TartIshRoom" EntitySet="TartIshRooms" />
+          </AssociationSet>
+          <AssociationSet Name="F_ChatMessage" Association="Self.F_ChatMessage">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="ChatMessage" EntitySet="ChatMessages" />
+          </AssociationSet>
+          <AssociationSet Name="F_DeletedMessages" Association="Self.F_DeletedMessages">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="DeletedMessages" EntitySet="DeletedMessages" />
+          </AssociationSet>
+          <AssociationSet Name="F_DeletedMessages2" Association="Self.F_DeletedMessages2">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="DeletedMessages" EntitySet="DeletedMessages" />
+          </AssociationSet>
+          <AssociationSet Name="F_Document" Association="Self.F_Document">
+            <End Role="TartIshRoom" EntitySet="TartIshRooms" />
+            <End Role="Document" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="F_Document2" Association="Self.F_Document2">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="Document" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserHobies" Association="Self.F_UserHobies">
+            <End Role="Hobby" EntitySet="Hobbies" />
+            <End Role="UserHobies" EntitySet="UserHobies" />
+          </AssociationSet>
+          <AssociationSet Name="F_Mastery2" Association="Self.F_Mastery2">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="Mastery" EntitySet="Masteries" />
+          </AssociationSet>
+          <AssociationSet Name="F_NotificationUser" Association="Self.F_NotificationUser">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="NotificationUser" EntitySet="NotificationUsers" />
+          </AssociationSet>
+          <AssociationSet Name="F_PersonComplaint" Association="Self.F_PersonComplaint">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="PersonComplaint" EntitySet="PersonComplaints" />
+          </AssociationSet>
+          <AssociationSet Name="F_PersonComplaint2" Association="Self.F_PersonComplaint2">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="PersonComplaint" EntitySet="PersonComplaints" />
+          </AssociationSet>
+          <AssociationSet Name="F_Poll" Association="Self.F_Poll">
+            <End Role="TartIshRoom" EntitySet="TartIshRooms" />
+            <End Role="Poll" EntitySet="Polls" />
+          </AssociationSet>
+          <AssociationSet Name="F_PollOption" Association="Self.F_PollOption">
+            <End Role="Poll" EntitySet="Polls" />
+            <End Role="PollOption" EntitySet="PollOptions" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserSelectedPoll2" Association="Self.F_UserSelectedPoll2">
+            <End Role="PollOption" EntitySet="PollOptions" />
+            <End Role="UserSelectedPoll" EntitySet="UserSelectedPolls" />
+          </AssociationSet>
+          <AssociationSet Name="F_Premium" Association="Self.F_Premium">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="Premium" EntitySet="Premiums" />
+          </AssociationSet>
+          <AssociationSet Name="F_PremiumUser" Association="Self.F_PremiumUser">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="PremiumUser" EntitySet="PremiumUsers" />
+          </AssociationSet>
+          <AssociationSet Name="F_Rating" Association="Self.F_Rating">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="Rating" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="F_Rating2" Association="Self.F_Rating2">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="Rating" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="F_Rating3" Association="Self.F_Rating3">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="Rating" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="F_Rating4" Association="Self.F_Rating4">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="Rating" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="F_RoomComplaint" Association="Self.F_RoomComplaint">
+            <End Role="TartIshRoom" EntitySet="TartIshRooms" />
+            <End Role="RoomComplaint" EntitySet="RoomComplaints" />
+          </AssociationSet>
+          <AssociationSet Name="F_RoomVote" Association="Self.F_RoomVote">
+            <End Role="RoomVotes" EntitySet="RoomVotes1" />
+            <End Role="RoomVote" EntitySet="RoomVotes" />
+          </AssociationSet>
+          <AssociationSet Name="F_RoomVote2" Association="Self.F_RoomVote2">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="RoomVote" EntitySet="RoomVotes" />
+          </AssociationSet>
+          <AssociationSet Name="F_RoomVote3" Association="Self.F_RoomVote3">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="RoomVote" EntitySet="RoomVotes" />
+          </AssociationSet>
+          <AssociationSet Name="F_RoomVotes" Association="Self.F_RoomVotes">
+            <End Role="TartIshRoom" EntitySet="TartIshRooms" />
+            <End Role="RoomVotes" EntitySet="RoomVotes1" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserRosette3" Association="Self.F_UserRosette3">
+            <End Role="Rosette" EntitySet="Rosettes" />
+            <End Role="UserRosette" EntitySet="UserRosettes" />
+          </AssociationSet>
+          <AssociationSet Name="F_Suggestion" Association="Self.F_Suggestion">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="Suggestion" EntitySet="Suggestions" />
+          </AssociationSet>
+          <AssociationSet Name="F_TartIshRoom3" Association="Self.F_TartIshRoom3">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="TartIshRoom" EntitySet="TartIshRooms" />
+          </AssociationSet>
+          <AssociationSet Name="F_TartIshRoom4" Association="Self.F_TartIshRoom4">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="TartIshRoom" EntitySet="TartIshRooms" />
+          </AssociationSet>
+          <AssociationSet Name="F_TartIshRoom5" Association="Self.F_TartIshRoom5">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="TartIshRoom" EntitySet="TartIshRooms" />
+          </AssociationSet>
+          <AssociationSet Name="F_TartIshRoom6" Association="Self.F_TartIshRoom6">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="TartIshRoom" EntitySet="TartIshRooms" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserStatus2" Association="Self.F_UserStatus2">
+            <End Role="TartIshRoom" EntitySet="TartIshRooms" />
+            <End Role="UserStatus" EntitySet="UserStatus" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserWatchedRoo2m" Association="Self.F_UserWatchedRoo2m">
+            <End Role="TartIshRoom" EntitySet="TartIshRooms" />
+            <End Role="UserWatchedRoom" EntitySet="UserWatchedRooms" />
+          </AssociationSet>
+          <AssociationSet Name="F_Section" Association="Self.F_Section">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="TartIshSection" EntitySet="TartIshSections" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserStatus" Association="Self.F_UserStatus">
+            <End Role="TartIshStatus" EntitySet="TartIshStatus" />
+            <End Role="UserStatus" EntitySet="UserStatus" />
+          </AssociationSet>
+          <AssociationSet Name="F_TartIshUser" Association="Self.F_TartIshUser">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserBan" Association="Self.F_UserBan">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="UserBan" EntitySet="UserBans" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserHobies2" Association="Self.F_UserHobies2">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="UserHobies" EntitySet="UserHobies" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserMessage" Association="Self.F_UserMessage">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="UserMessage" EntitySet="UserMessages" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserMessage2" Association="Self.F_UserMessage2">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="UserMessage" EntitySet="UserMessages" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserRosette" Association="Self.F_UserRosette">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="UserRosette" EntitySet="UserRosettes" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserRosette2" Association="Self.F_UserRosette2">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="UserRosette" EntitySet="UserRosettes" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserSelectedPoll" Association="Self.F_UserSelectedPoll">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="UserSelectedPoll" EntitySet="UserSelectedPolls" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserSubscriber" Association="Self.F_UserSubscriber">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="UserSubscriber" EntitySet="UserSubscribers" />
+          </AssociationSet>
+          <AssociationSet Name="F_UserWatchedRoom" Association="Self.F_UserWatchedRoom">
+            <End Role="TartIshUser" EntitySet="TartIshUsers" />
+            <End Role="UserWatchedRoom" EntitySet="UserWatchedRooms" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tartIshModelStoreContainer" CdmEntityContainer="tartIshEntities">
+          <EntitySetMapping Name="AdminTasks">
+            <EntityTypeMapping TypeName="tartIshModel.AdminTask">
+              <MappingFragment StoreEntitySet="AdminTask">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Task" ColumnName="Task" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="LastDate" ColumnName="LastDate" />
+                <ScalarProperty Name="Progress" ColumnName="Progress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BanTypes">
+            <EntityTypeMapping TypeName="tartIshModel.BanType">
+              <MappingFragment StoreEntitySet="BanType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="BanDuration" ColumnName="BanDuration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="tartIshModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chats">
+            <EntityTypeMapping TypeName="tartIshModel.Chat">
+              <MappingFragment StoreEntitySet="Chat">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ModeratorId" ColumnName="ModeratorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatMessages">
+            <EntityTypeMapping TypeName="tartIshModel.ChatMessage">
+              <MappingFragment StoreEntitySet="ChatMessage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="ChatMessageText" ColumnName="ChatMessageText" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeletedMessages">
+            <EntityTypeMapping TypeName="tartIshModel.DeletedMessage">
+              <MappingFragment StoreEntitySet="DeletedMessages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="ReceiverId" ColumnName="ReceiverId" />
+                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="tartIshModel.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="DocumentUrl" ColumnName="DocumentUrl" />
+                <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+                <ScalarProperty Name="TartIshRoomId" ColumnName="TartIshRoomId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hobbies">
+            <EntityTypeMapping TypeName="tartIshModel.Hobby">
+              <MappingFragment StoreEntitySet="Hobby">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="HobbyName" ColumnName="HobbyName" />
+                <ScalarProperty Name="HobbyDescription" ColumnName="HobbyDescription" />
+                <ScalarProperty Name="HobbyImg" ColumnName="HobbyImg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Masteries">
+            <EntityTypeMapping TypeName="tartIshModel.Mastery">
+              <MappingFragment StoreEntitySet="Mastery">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CategoryWins" ColumnName="CategoryWins" />
+                <ScalarProperty Name="CategoryMatchingCount" ColumnName="CategoryMatchingCount" />
+                <ScalarProperty Name="LastMatch" ColumnName="LastMatch" />
+                <ScalarProperty Name="LastOwnedDate" ColumnName="LastOwnedDate" />
+                <ScalarProperty Name="Rates" ColumnName="Rates" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationUsers">
+            <EntityTypeMapping TypeName="tartIshModel.NotificationUser">
+              <MappingFragment StoreEntitySet="NotificationUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonComplaints">
+            <EntityTypeMapping TypeName="tartIshModel.PersonComplaint">
+              <MappingFragment StoreEntitySet="PersonComplaint">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="ComplaintedId" ColumnName="ComplaintedId" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Polls">
+            <EntityTypeMapping TypeName="tartIshModel.Poll">
+              <MappingFragment StoreEntitySet="Poll">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TartIshRoomId" ColumnName="TartIshRoomId" />
+                <ScalarProperty Name="PollQuestion" ColumnName="PollQuestion" />
+                <ScalarProperty Name="PollWinnerPollId" ColumnName="PollWinnerPollId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PollOptions">
+            <EntityTypeMapping TypeName="tartIshModel.PollOption">
+              <MappingFragment StoreEntitySet="PollOption">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PoolTitle" ColumnName="PoolTitle" />
+                <ScalarProperty Name="PoolId" ColumnName="PoolId" />
+                <ScalarProperty Name="VoteCount" ColumnName="VoteCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Premiums">
+            <EntityTypeMapping TypeName="tartIshModel.Premium">
+              <MappingFragment StoreEntitySet="Premium">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PremiumDate" ColumnName="PremiumDate" />
+                <ScalarProperty Name="PremiumEndDate" ColumnName="PremiumEndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PremiumUsers">
+            <EntityTypeMapping TypeName="tartIshModel.PremiumUser">
+              <MappingFragment StoreEntitySet="PremiumUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstPremiumDate" ColumnName="FirstPremiumDate" />
+                <ScalarProperty Name="LastUpdatedPremiumDate" ColumnName="LastUpdatedPremiumDate" />
+                <ScalarProperty Name="OwnedPremiumCount" ColumnName="OwnedPremiumCount" />
+                <ScalarProperty Name="PremiumStreak" ColumnName="PremiumStreak" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="tartIshModel.Rating">
+              <MappingFragment StoreEntitySet="Rating">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="ReceiverId" ColumnName="ReceiverId" />
+                <ScalarProperty Name="RatingValue" ColumnName="RatingValue" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomComplaints">
+            <EntityTypeMapping TypeName="tartIshModel.RoomComplaint">
+              <MappingFragment StoreEntitySet="RoomComplaint">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="TartIshRoomId" ColumnName="TartIshRoomId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomVotes">
+            <EntityTypeMapping TypeName="tartIshModel.RoomVote">
+              <MappingFragment StoreEntitySet="RoomVote">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoomVotesId" ColumnName="RoomVotesId" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="VotedId" ColumnName="VotedId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomVotes1">
+            <EntityTypeMapping TypeName="tartIshModel.RoomVote1">
+              <MappingFragment StoreEntitySet="RoomVotes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="RoomOwnerVotesCount" ColumnName="RoomOwnerVotesCount" />
+                <ScalarProperty Name="RivalVotesCount" ColumnName="RivalVotesCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rosettes">
+            <EntityTypeMapping TypeName="tartIshModel.Rosette">
+              <MappingFragment StoreEntitySet="Rosette">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RosetteName" ColumnName="RosetteName" />
+                <ScalarProperty Name="RosetteImg" ColumnName="RosetteImg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suggestions">
+            <EntityTypeMapping TypeName="tartIshModel.Suggestion">
+              <MappingFragment StoreEntitySet="Suggestion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="SuggestionText" ColumnName="SuggestionText" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TartIshRooms">
+            <EntityTypeMapping TypeName="tartIshModel.TartIshRoom">
+              <MappingFragment StoreEntitySet="TartIshRoom">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="RoomDescription" ColumnName="RoomDescription" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ViewersCount" ColumnName="ViewersCount" />
+                <ScalarProperty Name="RoomCreatorId" ColumnName="RoomCreatorId" />
+                <ScalarProperty Name="RivalId" ColumnName="RivalId" />
+                <ScalarProperty Name="RoomImageUrl" ColumnName="RoomImageUrl" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+                <ScalarProperty Name="RoomStartDate" ColumnName="RoomStartDate" />
+                <ScalarProperty Name="RoomFinishDate" ColumnName="RoomFinishDate" />
+                <ScalarProperty Name="WinnerId" ColumnName="WinnerId" />
+                <ScalarProperty Name="IsRoomPrivate" ColumnName="IsRoomPrivate" />
+                <ScalarProperty Name="IsRunAway" ColumnName="IsRunAway" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+                <ScalarProperty Name="IsFinished" ColumnName="IsFinished" />
+                <ScalarProperty Name="RunawayId" ColumnName="RunawayId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TartIshSections">
+            <EntityTypeMapping TypeName="tartIshModel.TartIshSection">
+              <MappingFragment StoreEntitySet="TartIshSection">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ViewerTypeId" ColumnName="ViewerTypeId" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TartIshStatus">
+            <EntityTypeMapping TypeName="tartIshModel.TartIshStatu">
+              <MappingFragment StoreEntitySet="TartIshStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TartIshUsers">
+            <EntityTypeMapping TypeName="tartIshModel.TartIshUser">
+              <MappingFragment StoreEntitySet="TartIshUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="TotalActiveteMinutes" ColumnName="TotalActiveteMinutes" />
+                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsBanned" ColumnName="IsBanned" />
+                <ScalarProperty Name="LastLogIn" ColumnName="LastLogIn" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="PassiveDate" ColumnName="PassiveDate" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserBans">
+            <EntityTypeMapping TypeName="tartIshModel.UserBan">
+              <MappingFragment StoreEntitySet="UserBan">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BanTypeId" ColumnName="BanTypeId" />
+                <ScalarProperty Name="LastDate" ColumnName="LastDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserHobies">
+            <EntityTypeMapping TypeName="tartIshModel.UserHoby">
+              <MappingFragment StoreEntitySet="UserHobies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="HobbyId" ColumnName="HobbyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMessages">
+            <EntityTypeMapping TypeName="tartIshModel.UserMessage">
+              <MappingFragment StoreEntitySet="UserMessage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="ReceiverId" ColumnName="ReceiverId" />
+                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRosettes">
+            <EntityTypeMapping TypeName="tartIshModel.UserRosette">
+              <MappingFragment StoreEntitySet="UserRosette">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RosetteId" ColumnName="RosetteId" />
+                <ScalarProperty Name="OwnedDate" ColumnName="OwnedDate" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSelectedPolls">
+            <EntityTypeMapping TypeName="tartIshModel.UserSelectedPoll">
+              <MappingFragment StoreEntitySet="UserSelectedPoll">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PoolOptionId" ColumnName="PoolOptionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserStatus">
+            <EntityTypeMapping TypeName="tartIshModel.UserStatu">
+              <MappingFragment StoreEntitySet="UserStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TartIshStatusId" ColumnName="TartIshStatusId" />
+                <ScalarProperty Name="TartIshRoomId" ColumnName="TartIshRoomId" />
+                <ScalarProperty Name="StatusStartDate" ColumnName="StatusStartDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSubscribers">
+            <EntityTypeMapping TypeName="tartIshModel.UserSubscriber">
+              <MappingFragment StoreEntitySet="UserSubscriber">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SubscriberId" ColumnName="SubscriberId" />
+                <ScalarProperty Name="SubscribedId" ColumnName="SubscribedId" />
+                <ScalarProperty Name="SubscriptionDate" ColumnName="SubscriptionDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="tartIshModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserWatchedRooms">
+            <EntityTypeMapping TypeName="tartIshModel.UserWatchedRoom">
+              <MappingFragment StoreEntitySet="UserWatchedRoom">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TartIshRoomId" ColumnName="TartIshRoomId" />
+                <ScalarProperty Name="WatchedDuration" ColumnName="WatchedDuration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

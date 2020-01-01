@@ -1,0 +1,9 @@
+﻿@{
+    if (!ViewBag.isUserLoggedIn)
+    { Layout = "~/Views/Shared/_HomeLoggedOff.cshtml"; }
+    else
+    { Layout = "~/Views/Shared/_HomeLoggedIn.cshtml"; }
+}
+
+@RenderBody()
+

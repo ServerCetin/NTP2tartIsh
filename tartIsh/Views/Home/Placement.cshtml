@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Sıralama";
+    Layout = "~/Views/Shared/_HomeWFooter.cshtml";
+}
+
+    <section class="bg0 p-t-10">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Alan -->
+                <div class="container">
+
+                    <div class="bg0 flex-wr-lb-c p-rl-0 p-tb-12">
+
+
+                        <div class="tab01-head how2 how2-cl2 bocl12 flex-s-c m-r-10 m-r-0-sr991">
+                            <!-- Brand tab -->
+                            <h3 class="f1-m-2 cl13 tab01-title">
+                                En çok zafer alanlar
+                            </h3>
+
+                        </div>
+
+                    </div>
+                </div>
+                @for (int i = 0; i < ViewBag.mostWinners.GetLength(0); i++)
+                {
+                    if (i != 0 && @ViewBag.mostWinners[i, 0] == @ViewBag.mostWinners[0, 0]) { break; }
+                    <div class="col-md-3 p-rl-15-sr1199 mt-1" style="float:left">
+                        <img src="@ViewBag.mostWinners[i,4]" width="75px" height="70px" style="float:left;" />
+                        <b style="margin-left:5px;">#@(i + 1) @ViewBag.mostWinners[i, 1]</b><br>
+                        <b style="margin-left:5px;">Zafer Sayısı:</b> @ViewBag.mostWinners[i, 2]<br>
+                        <b style="margin-left:5px;">tartIsh Yaşı:</b> @ViewBag.mostWinners[i, 3]
+                    </div>
+                }
+
+
+                <!-- Alan -->
+                <div class="container">
+
+                    <div class="bg0 flex-wr-lb-c p-rl-0 p-tb-12">
+
+
+                        <div class="tab01-head how2 how2-cl2 bocl12 flex-s-c m-r-10 m-r-0-sr991">
+                            <!-- Brand tab -->
+                            <h3 class="f1-m-2 cl13 tab01-title">
+                                En çok Abonesi Olanlar
+                            </h3>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                @for (int i = 0; i < ViewBag.mostSubbers.GetLength(0); i++)
+                {
+                    if (i != 0 && @ViewBag.mostSubbers[i, 0] == @ViewBag.mostSubbers[i-1, 0]) { break; }
+                    <div class="col-md-3 p-rl-15-sr1199 mt-1" style="float:left">
+                        <img src="@ViewBag.mostSubbers[i,4]" width="75px" height="70px" style="float:left;" />
+                        <b style="margin-left:5px;">#@(i + 1) @ViewBag.mostSubbers[i, 1]</b><br>
+                        <b style="margin-left:5px;">Abone Sayısı:</b> @ViewBag.mostSubbers[i, 2]<br>
+                        <b style="margin-left:5px;">tartIsh Yaşı:</b> @ViewBag.mostSubbers[i, 3]
+                    </div>
+                }
+               
+                <!-- Alan -->
+           
+                <br><br><br><br>

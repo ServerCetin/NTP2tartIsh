@@ -1,0 +1,147 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminContent.cshtml";
+}
+@ViewBag.UserName
+<!-- Widgets -->
+<div class="row clearfix">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-pink hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">person</i>
+            </div>
+            <div class="content">
+                <div class="text">Kayıtlı Kullanıcılar</div>
+                <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20">@ViewBag.KayıtlıKullanici</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-cyan hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">videocam</i>
+            </div>
+            <div class="content">
+                <div class="text">tartIsh Odaları</div>
+                <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">@ViewBag.TartIshOdaları</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-light-green hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">view_list</i>
+            </div>
+            <div class="content">
+                <div class="text">Kategoriler</div>
+                <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20">@ViewBag.Kategoriler</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-orange hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">error</i>
+            </div>
+            <div class="content">
+                <div class="text">Şikayetler</div>
+                <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20">@ViewBag.Sikayetler</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Widgets -->
+<!-- Table Section -->
+<div class="row clearfix">
+    <!-- Task Info -->
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <div class="card">
+            <div class="header">
+                <h2>Görevler</h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="/Panel/Gorev-Ekle">İş Ekle</a></li>
+                            <li><a href="/Panel/Gorev-Listesi">İşleri Yönet</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-hover dashboard-task-infos">
+                        <thead>
+                            <tr>
+                                <th>Görev</th>
+                                <th>Son Tarih</th>
+                                <th>Görevli</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.TaskList)
+                            {
+                            <tr>
+                                <th>@item.Task</th>
+                                <th>@item.LastDate</th>
+                                <th>
+                                    @if (item.EmployeeId == null)
+                                    {<label>Herkes</label>}
+                                    else
+                                    { @item.TartIshUser.UserName}
+                                </th>
+                            </tr>
+                                    }
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #END# Task Info -->
+    <!-- Category Statistics -->
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="card">
+            <div class="body bg-pink">
+                <div class="m-b--35 font-bold">KATEGORİLERİN İSTATİSTİĞİ</div>
+                <ul class="dashboard-stat-list">
+                    <li>
+                        Siyaset | 1231 Room
+                        <span class="pull-right">
+                            <i class="material-icons">trending_up</i>
+                        </span>
+                    </li>
+                    <li>
+                        Bilim | 1231 Room
+                        <span class="pull-right">
+                            <i class="material-icons">trending_up</i>
+                        </span>
+                    </li>
+                    <li>
+                        Kültür | 1231 Room
+                        <span class="pull-right">
+                            <i class="material-icons">trending_up</i>
+                        </span>
+                    </li>
+                    <li>
+                        Sanat | 1231 Room
+                        <span class="pull-right">
+                            <i class="material-icons">trending_up</i>
+                        </span>
+                    </li>
+                    <li>
+                        Oyun | 5 Room
+                        <span class="pull-right">
+                            <i class="material-icons">trending_down</i>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- #END# Browser Usage -->
+</div>
+<!-- #END# Table Section -->

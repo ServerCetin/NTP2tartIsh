@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="tartIshModelStoreContainer" CdmEntityContainer="tartIshEntities">
+    <EntitySetMapping Name="AdminTasks">
+      <EntityTypeMapping TypeName="tartIshModel.AdminTask">
+        <MappingFragment StoreEntitySet="AdminTask">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Task" ColumnName="Task" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="LastDate" ColumnName="LastDate" />
+          <ScalarProperty Name="Progress" ColumnName="Progress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bans">
+      <EntityTypeMapping TypeName="tartIshModel.Ban">
+        <MappingFragment StoreEntitySet="Ban">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="BanDuration" ColumnName="BanDuration" />
+          <ScalarProperty Name="LastDate" ColumnName="LastDate" />
+          <ScalarProperty Name="IsSelectable" ColumnName="IsSelectable" />
+          <ScalarProperty Name="BanPriority" ColumnName="BanPriority" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="tartIshModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Chats">
+      <EntityTypeMapping TypeName="tartIshModel.Chat">
+        <MappingFragment StoreEntitySet="Chat">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ModeratorId" ColumnName="ModeratorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChatMessages">
+      <EntityTypeMapping TypeName="tartIshModel.ChatMessage">
+        <MappingFragment StoreEntitySet="ChatMessage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+          <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeletedMessages">
+      <EntityTypeMapping TypeName="tartIshModel.DeletedMessage">
+        <MappingFragment StoreEntitySet="DeletedMessages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+          <ScalarProperty Name="ReceiverId" ColumnName="ReceiverId" />
+          <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+          <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documents">
+      <EntityTypeMapping TypeName="tartIshModel.Document">
+        <MappingFragment StoreEntitySet="Document">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+          <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+          <ScalarProperty Name="DocumentUrl" ColumnName="DocumentUrl" />
+          <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+          <ScalarProperty Name="TartIshRoomId" ColumnName="TartIshRoomId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hobbies">
+      <EntityTypeMapping TypeName="tartIshModel.Hobby">
+        <MappingFragment StoreEntitySet="Hobby">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="HobbyName" ColumnName="HobbyName" />
+          <ScalarProperty Name="HobbyDescription" ColumnName="HobbyDescription" />
+          <ScalarProperty Name="HobbyImg" ColumnName="HobbyImg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Masteries">
+      <EntityTypeMapping TypeName="tartIshModel.Mastery">
+        <MappingFragment StoreEntitySet="Mastery">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CategoryWins" ColumnName="CategoryWins" />
+          <ScalarProperty Name="CategoryMatchingCount" ColumnName="CategoryMatchingCount" />
+          <ScalarProperty Name="LastMatch" ColumnName="LastMatch" />
+          <ScalarProperty Name="LastOwnedDate" ColumnName="LastOwnedDate" />
+          <ScalarProperty Name="Rates" ColumnName="Rates" />
+          <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationUsers">
+      <EntityTypeMapping TypeName="tartIshModel.NotificationUser">
+        <MappingFragment StoreEntitySet="NotificationUser">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonComplaints">
+      <EntityTypeMapping TypeName="tartIshModel.PersonComplaint">
+        <MappingFragment StoreEntitySet="PersonComplaint">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+          <ScalarProperty Name="ComplaintedId" ColumnName="ComplaintedId" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Polls">
+      <EntityTypeMapping TypeName="tartIshModel.Poll">
+        <MappingFragment StoreEntitySet="Poll">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TartIshRoomId" ColumnName="TartIshRoomId" />
+          <ScalarProperty Name="PollQuestion" ColumnName="PollQuestion" />
+          <ScalarProperty Name="PollWinnerPollId" ColumnName="PollWinnerPollId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PollOptions">
+      <EntityTypeMapping TypeName="tartIshModel.PollOption">
+        <MappingFragment StoreEntitySet="PollOption">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PoolTitle" ColumnName="PoolTitle" />
+          <ScalarProperty Name="PoolId" ColumnName="PoolId" />
+          <ScalarProperty Name="VoteCount" ColumnName="VoteCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Premiums">
+      <EntityTypeMapping TypeName="tartIshModel.Premium">
+        <MappingFragment StoreEntitySet="Premium">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PremiumDate" ColumnName="PremiumDate" />
+          <ScalarProperty Name="PremiumEndDate" ColumnName="PremiumEndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PremiumUsers">
+      <EntityTypeMapping TypeName="tartIshModel.PremiumUser">
+        <MappingFragment StoreEntitySet="PremiumUser">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FirstPremiumDate" ColumnName="FirstPremiumDate" />
+          <ScalarProperty Name="LastUpdatedPremiumDate" ColumnName="LastUpdatedPremiumDate" />
+          <ScalarProperty Name="OwnedPremiumCount" ColumnName="OwnedPremiumCount" />
+          <ScalarProperty Name="PremiumStreak" ColumnName="PremiumStreak" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ratings">
+      <EntityTypeMapping TypeName="tartIshModel.Rating">
+        <MappingFragment StoreEntitySet="Rating">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+          <ScalarProperty Name="ReceiverId" ColumnName="ReceiverId" />
+          <ScalarProperty Name="RatingValue" ColumnName="RatingValue" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomComplaints">
+      <EntityTypeMapping TypeName="tartIshModel.RoomComplaint">
+        <MappingFragment StoreEntitySet="RoomComplaint">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+          <ScalarProperty Name="TartIshRoomId" ColumnName="TartIshRoomId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomVotes">
+      <EntityTypeMapping TypeName="tartIshModel.RoomVote">
+        <MappingFragment StoreEntitySet="RoomVote">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RoomVotesId" ColumnName="RoomVotesId" />
+          <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+          <ScalarProperty Name="VotedId" ColumnName="VotedId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomVotes1">
+      <EntityTypeMapping TypeName="tartIshModel.RoomVote1">
+        <MappingFragment StoreEntitySet="RoomVotes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="RoomOwnerVotesCount" ColumnName="RoomOwnerVotesCount" />
+          <ScalarProperty Name="RivalVotesCount" ColumnName="RivalVotesCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rosettes">
+      <EntityTypeMapping TypeName="tartIshModel.Rosette">
+        <MappingFragment StoreEntitySet="Rosette">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RosetteName" ColumnName="RosetteName" />
+          <ScalarProperty Name="RosetteImg" ColumnName="RosetteImg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suggestions">
+      <EntityTypeMapping TypeName="tartIshModel.Suggestion">
+        <MappingFragment StoreEntitySet="Suggestion">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SuggestionText" ColumnName="SuggestionText" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TartIshRooms">
+      <EntityTypeMapping TypeName="tartIshModel.TartIshRoom">
+        <MappingFragment StoreEntitySet="TartIshRoom">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="RoomDescription" ColumnName="RoomDescription" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="ViewersCount" ColumnName="ViewersCount" />
+          <ScalarProperty Name="RoomCreatorId" ColumnName="RoomCreatorId" />
+          <ScalarProperty Name="RivalId" ColumnName="RivalId" />
+          <ScalarProperty Name="RoomImageUrl" ColumnName="RoomImageUrl" />
+          <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+          <ScalarProperty Name="RoomStartDate" ColumnName="RoomStartDate" />
+          <ScalarProperty Name="RoomFinishDate" ColumnName="RoomFinishDate" />
+          <ScalarProperty Name="WinnerId" ColumnName="WinnerId" />
+          <ScalarProperty Name="IsRoomPrivate" ColumnName="IsRoomPrivate" />
+          <ScalarProperty Name="IsRunAway" ColumnName="IsRunAway" />
+          <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+          <ScalarProperty Name="IsFinished" ColumnName="IsFinished" />
+          <ScalarProperty Name="RunawayId" ColumnName="RunawayId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TartIshSections">
+      <EntityTypeMapping TypeName="tartIshModel.TartIshSection">
+        <MappingFragment StoreEntitySet="TartIshSection">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ViewerTypeId" ColumnName="ViewerTypeId" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TartIshStatus">
+      <EntityTypeMapping TypeName="tartIshModel.TartIshStatu">
+        <MappingFragment StoreEntitySet="TartIshStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TartIshUsers">
+      <EntityTypeMapping TypeName="tartIshModel.TartIshUser">
+        <MappingFragment StoreEntitySet="TartIshUser">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="TotalActiveteMinutes" ColumnName="TotalActiveteMinutes" />
+          <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+          <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsBanned" ColumnName="IsBanned" />
+          <ScalarProperty Name="LastLogIn" ColumnName="LastLogIn" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+          <ScalarProperty Name="PassiveDate" ColumnName="PassiveDate" />
+          <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserBans">
+      <EntityTypeMapping TypeName="tartIshModel.UserBan">
+        <MappingFragment StoreEntitySet="UserBan">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BanId" ColumnName="BanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserHobies">
+      <EntityTypeMapping TypeName="tartIshModel.UserHoby">
+        <MappingFragment StoreEntitySet="UserHobies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="HobbyId" ColumnName="HobbyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserMessages">
+      <EntityTypeMapping TypeName="tartIshModel.UserMessage">
+        <MappingFragment StoreEntitySet="UserMessage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+          <ScalarProperty Name="ReceiverId" ColumnName="ReceiverId" />
+          <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+          <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRosettes">
+      <EntityTypeMapping TypeName="tartIshModel.UserRosette">
+        <MappingFragment StoreEntitySet="UserRosette">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RosetteId" ColumnName="RosetteId" />
+          <ScalarProperty Name="OwnedDate" ColumnName="OwnedDate" />
+          <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSelectedPolls">
+      <EntityTypeMapping TypeName="tartIshModel.UserSelectedPoll">
+        <MappingFragment StoreEntitySet="UserSelectedPoll">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PoolOptionId" ColumnName="PoolOptionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserStatus">
+      <EntityTypeMapping TypeName="tartIshModel.UserStatu">
+        <MappingFragment StoreEntitySet="UserStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TartIshStatusId" ColumnName="TartIshStatusId" />
+          <ScalarProperty Name="TartIshRoomId" ColumnName="TartIshRoomId" />
+          <ScalarProperty Name="StatusStartDate" ColumnName="StatusStartDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSubscribers">
+      <EntityTypeMapping TypeName="tartIshModel.UserSubscriber">
+        <MappingFragment StoreEntitySet="UserSubscriber">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SubscriberId" ColumnName="SubscriberId" />
+          <ScalarProperty Name="SubscribedId" ColumnName="SubscribedId" />
+          <ScalarProperty Name="SubscriptionDate" ColumnName="SubscriptionDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="tartIshModel.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserWatchedRooms">
+      <EntityTypeMapping TypeName="tartIshModel.UserWatchedRoom">
+        <MappingFragment StoreEntitySet="UserWatchedRoom">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TartIshRoomId" ColumnName="TartIshRoomId" />
+          <ScalarProperty Name="WatchedDuration" ColumnName="WatchedDuration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

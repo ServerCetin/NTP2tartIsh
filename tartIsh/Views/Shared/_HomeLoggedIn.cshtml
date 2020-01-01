@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.png" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/fontawesome-5.0.8/css/fontawesome-all.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body class="animsition">
+
+    <!-- Header -->
+    <header>
+        <!-- Header desktop -->
+        <div class="container-menu-desktop">
+            <!-- Header Mobile -->
+            <div class="wrap-header-mobile">
+                <!-- Logo moblie -->
+                <div class="logo-mobile">
+                    <a href="/"><img src="~/images/icons/logo-01.png" alt="IMG-LOGO"></a>
+                </div>
+
+                <!-- Button show menu -->
+                <div class="btn-show-menu-mobile hamburger hamburger--squeeze m-r--8">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Menu Mobile -->
+            <div class="menu-mobile">
+                <ul class="main-menu-m">
+                    <li><a href="/" class="single-menu">Ana Sayfa</a></li>
+                    <li><a href="/Gezin" class="single-menu">Gezin</a></li>
+                    <li><a href="/Kategoriler" class="single-menu">Kategoriler</a></li>
+                    <li><a href="/Siralama" class="single-menu">Sıralamalar</a></li>
+                    <li><a href="/iletisim" class="single-menu">İletişim</a></li>
+                    <li><a href="/" class="single-menu">Tartışma Oluştur</a></li>
+                    <li><a href="/" class="single-menu">Tartışma Ara</a></li>
+                    <a href="#"><i _ngcontent-xbq-c19="" class="material-icons icon-image-preview">perm_identity</i> @Session["userName"]</a>
+                    <li><a href="/Profilim">Profilim</a></li>
+                    @{if (Session["userType"].ToString() == "Admin")
+                        {
+                            <li><a href="/Panel">Yönetici Paneli</a></li>
+                        }
+                    }
+                    <li><a href="/hesap-ayarlari">Hesap Ayarları</a></li>
+                    <li><a href="/Mesajlarim">Mesajlarım</a></li>
+                    <li><a href="/Cikis-Yap">Çıkış Yap</a></li>
+                </ul>
+            </div>
+
+            <div class="wrap-main-nav">
+                <div class="main-nav">
+                    <!-- Menu desktop -->
+                    <nav class="menu-desktop">
+
+                        <ul class="main-menu">
+
+                            <a href="/"><img style="width:45px;height: 45px;" src="~/images/logo/tartIshLogo.png" /></a>
+
+                            <a href="/Gezin" class="single-menu">Gezin</a>
+                            <a href="/Kategoriler" class="single-menu">Kategoriler</a>
+                            <a href="/Siralama" class="single-menu">Sıralamalar</a>
+
+                            <li>
+                                <a href="#">Diğer</a>
+                                <ul class="sub-menu">
+                                    <li><a href="/iletisim">İletişim</a></li>
+                                </ul>
+                            </li>
+
+
+                            <div class="pos-relative size-a-2-search bo-1-rad-22 of-hidden bocl11 m-tb-6" style="margin-left:auto;">
+                                <input class="f1-s-1 cl6 plh9 s-full p-l-25 p-r-45" type="text" name="search" placeholder="Ara: Kullanıcı, tartışma...">
+                                <button class="flex-c-c size-a-1 ab-t-r fs-20 cl2 hov-cl10 trans-03">
+                                    <i class="zmdi zmdi-search"></i>
+                                </button>
+                            </div>
+                            <li>
+                                <a href="#">+</a>
+                                <ul class="sub-menu">
+                                    <li><a href="/">Tartışma Oluştur</a></li>
+                                    <li><a href="/">Tartışma Ara</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i _ngcontent-xbq-c19="" class="material-icons icon-image-preview">perm_identity</i> @Session["userName"]</a>
+                                <ul class="sub-menu">
+                                    <li><a href="/Profilim">Profilim</a></li>
+                                    @{if (Session["userType"].ToString() == "Admin")
+                                        {
+                                            <li><a href="/Panel">Yönetici Paneli</a></li>
+                                        }
+                                    }
+                                    <li><a href="/hesap-ayarlari">Hesap Ayarları</a></li>
+                                    <li><a href="/Mesajlarim">Mesajlarım</a></li>
+                                    <li><a href="/Cikis-Yap">Çıkış Yap</a></li>
+                                </ul>
+                            </li>
+                </div>
+
+                </ul>
+                </nav>
+            </div>
+        </div>
+        </div>
+    </header>
+
+
+    @RenderBody()
+
+    <!--===============================================================================================-->
+    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/js/main.js"></script>

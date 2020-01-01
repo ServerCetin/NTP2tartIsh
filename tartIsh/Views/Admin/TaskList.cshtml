@@ -1,0 +1,59 @@
+﻿@model IEnumerable<tartIsh.Models.AdminTask>
+@{
+    ViewBag.Title = "Görev Listesi";
+    Layout = "~/Views/Shared/_AdminContent.cshtml";
+}
+
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Görevler
+                </h2>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                        <thead>
+                            <tr>
+                                <th>Görev</th>
+                                <th>Bitiş Tarihi</th>
+                                <th>Görevlisi</th>
+                                <th>İşlem</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Görev</th>
+                                <th>Bitiş Tarihi</th>
+                                <th>Görevlisi</th>
+                                <th>İşlem</th>
+                         </tfoot>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Task)</td>
+                                <td>@Html.DisplayFor(modelItem => item.LastDate)</td>
+                                <td>
+                                    @if (item.EmployeeId == null)
+                                    {<label>Herkes</label>}
+                                    else
+                                    { @Html.DisplayFor(modelItem => item.TartIshUser.UserName)}
+                                 </td>
+                                <td>
+                                    @Html.ActionLink("Düzenle", "EditTask", new { taskId = item.Id })
+                                    @Html.ActionLink("Sil", "DeleteTask", new { taskId = item.Id })
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,81 @@
+﻿@model tartIsh.Models.TartIshUser
+@{
+    ViewBag.Title = "Hesap Ayarları";
+    Layout = "~/Views/Shared/_HomeWFooterAndSideBar.cshtml";
+}
+
+<section class="bg0">
+    <div class="container">
+        <div class="row m-rl--1 m-t-10">
+            <div class="col-md-10 col-lg-8">
+
+                <div class="container">
+
+                    <div class="bg0 flex-wr-lb-c p-rl-0 p-tb-12">
+
+
+                        <div class="tab01-head how2 how2-cl1 bocl12 flex-s-c m-r-10 m-r-0-sr991">
+                            <!-- Brand tab -->
+                            <h3 class="f1-m-2 cl12 tab01-title">
+                                Hesap Ayarları
+                            </h3>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                    <br>
+                    <br>
+                    <div class="container">
+                        <b>Adınız:</b> @Model.FirstName<br>
+                        <b>Soyadınız:</b> @Model.LastName<br>
+                        <b>E-postanız:</b> @Model.Email<br>
+                        <b>Doğum Tarihiniz:</b> @Model.BirthDate.ToShortDateString()<br>
+                        <b>Kullanıcı Tipiniz</b> @Model.UserType.TypeName<br>
+                        <b>Hobileriniz:</b>
+                        @foreach (var item in Model.UserHobies)
+                        {
+                            <p style="text-indent:80px;">@item.Hobby.HobbyName</p>
+                        }
+                        <b>Rozetleriniz:</b>
+                        @foreach (var item in Model.UserRosettes)
+                        {
+                            <p style="text-indent:80px;">@item.Rosette.RosetteName</p>
+                        }
+                        <b>Ustalıklarınız:</b>
+                        @foreach (var item in Model.Masteries)
+                        {
+                            <p style="text-indent:80px;">@item.Category.CategoryName kategorisinde ustasınız.</p>
+                        }
+                        <br>
+                        <br>
+                        <br>
+                        <b>Hobi Ekle:</b>
+
+                        <form method="post" action="hobi-ekle">
+                            <select name="hobiEkle">
+                                <option value="0">Seçiniz..</option>
+                                @foreach (var item in ViewBag.HobbiesThatTheUserDoNotHave)
+                                {
+                                    <option value="@item.Id">@item.HobbyName</option>
+                                }
+                            </select><br>
+                            <button class="modalButton" type="submit" name="signUp">Ekle</button>
+                        </form>
+                            <b>Hobi Sil:</b>
+
+                        <form method="post" action="hobi-sil">
+                            <select name="hobiSil">
+                                <option value="0">Seçiniz..</option>
+                                @foreach (var item in Model.UserHobies)
+                                {
+                                    <option value="@item.Hobby.Id">@item.Hobby.HobbyName</option>
+                                }
+                            </select>
+                            <button class="modalButton" type="submit" name="signUp">Sil</button>
+                        </form>
+
+                    </div>
+
+            </div>

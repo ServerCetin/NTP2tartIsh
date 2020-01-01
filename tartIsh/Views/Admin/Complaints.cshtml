@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Şikayetler";
+    Layout = "~/Views/Shared/_AdminContent.cshtml";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Kullanıcı Şikayetleri
+                </h2>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                        <thead>
+                            <tr>
+                                <th>Şikayet Eden</th>
+                                <th>Şikayet Edilen</th>
+                                <th>Gerekçe</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Şikayet Eden</th>
+                                <th>Şikayet Edilen</th>
+                                <th>Gerekçe</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @for (int x=0;x<ViewBag.GetAllPersonComplaints.GetLength(0);x++)
+                            {
+                                <tr>
+                                    <td>@ViewBag.GetAllPersonComplaints[x,1]</td>
+                                    <td>@ViewBag.GetAllPersonComplaints[x,2]</td>
+                                    <td>@ViewBag.GetAllPersonComplaints[x,3]</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Tartışma Odası Şikayetleri
+                </h2>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                        <thead>
+                            <tr>
+                                <th>Şikayet Eden</th>
+                                <th>Oda</th>
+                                <th>Gerekçe</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Şikayet Eden</th>
+                                <th>Oda</th>
+                                <th>Gerekçe</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @for (int x = 0; x < ViewBag.GetAllRoomComplaints.GetLength(0); x++)
+                            {
+                                <tr>
+                                    <td>@ViewBag.GetAllPersonComplaints[x, 1]</td>
+                                    <td>@ViewBag.GetAllPersonComplaints[x, 2]</td>
+                                    <td>@ViewBag.GetAllPersonComplaints[x, 3]</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

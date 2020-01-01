@@ -1,0 +1,102 @@
+﻿@{Layout = "~/Views/Shared/_AdminTopBar.cshtml"; }
+<section>
+    <!-- Left Sidebar -->
+    <aside id="leftsidebar" class="sidebar">
+        <!-- User Info -->
+        <div class="user-info">
+            <div class="image">
+                <img src="~/admin/images/user.png" width="48" height="48" alt="User" />
+            </div>
+            <div class="info-container">
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@ViewBag.Name (@ViewBag.UserName)</div>
+                <div class="email">@ViewBag.Email</div>
+                <div class="btn-group user-helper-dropdown">
+                    <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="/panel/logout"><i class="material-icons">input</i>Çıkış Yap</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- #User Info -->
+        <!-- Menu -->
+        <div class="menu">
+            <ul class="list">
+                <li class="active">
+                    <a href="/panel">
+                        <i class="material-icons">home</i>
+                        <span>Ana Sayfa</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">people</i>
+                        <span>Kullanıcılar</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="/panel/kullanici-listesi">Kullanıcı Listesi</a>
+                        </li>
+                        <li>
+                            <a href="/panel/usta-kullanicilar">Usta Kullanıcılar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/panel/tartIsh-Odalari">
+                        <i class="material-icons">videocam</i>
+                        <span>Tartışmalar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">bookmark</i>
+                        <span>Kazanım ve Alanlar</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="/Panel/Rozetler">Rozetler</a>
+                        </li>
+                        <li>
+                            <a href="~/Panel/Hobiler">Hobiler</a>
+                        </li>
+                        <li>
+                            <a href="/Panel/Kategoriler">Kategoriler</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/Panel/Sikayetler">
+                        <i class="material-icons">not_interested</i>
+                        <span>Şikayetler</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Panel/Oneriler">
+                        <i class="material-icons">not_interested</i>
+                        <span>Öneriler</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="pages/helper-classes.html">
+                        <i class="material-icons">error_outline</i>
+                        <span>Hata Kayıtları</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- #Menu -->
+        <!-- Footer -->
+        <div class="legal">
+            <div class="copyright">
+                &copy; 2019 - 2020 <a href="javascript:void(0);">tartIsh Admin Paneli. <br>AdminBSB</a>.
+            </div>
+        </div>
+        <!-- #Footer -->
+    </aside>
+    <!-- #END# Left Sidebar -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            @RenderBody()

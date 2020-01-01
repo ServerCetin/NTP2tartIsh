@@ -1,0 +1,58 @@
+﻿@model IEnumerable<tartIsh.Models.Rosette>
+@{
+    ViewBag.Title = "Rozet Listesi";
+    Layout = "~/Views/Shared/_AdminContent.cshtml";
+}
+
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Rozetler
+                </h2>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                        <thead>
+                            <tr>
+                                <th>Rozet</th>
+                                <th>Resmi</th>
+                                <th>Rozetli Sayısı</th>
+                                <th>Eylem</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Kategori</th>
+                                <th>Resmi</th>
+                                <th>Rozetli Sayısı</th>
+                                <th>Eylem</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                int turn = 0;
+                                string rosetteUsersCount = ViewBag.GetUsersRosette[turn, 1].ToString();
+                                for (int x = 0; x < ViewBag.GetUsersRosette.GetLength(0); x++)
+                                {
+                                    if (item.Id == ViewBag.GetUsersRosette[x, 0]) { turn = x; }
+                                }
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.RosetteName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.RosetteImg)</td>
+                                    <td>@ViewBag.GetUsersRosette[turn, 1]</td>
+                                    <td>@Html.ActionLink("Düzenle", "EditRosettes", new { id = item.Id })</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

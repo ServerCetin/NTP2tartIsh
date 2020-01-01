@@ -1,0 +1,58 @@
+﻿@model IEnumerable<tartIsh.Models.TartIshRoom>
+
+@{
+    ViewBag.Title = "TartIsh Odaları";
+    Layout = "~/Views/Shared/_AdminContent.cshtml";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Kullanıcılar
+                </h2>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                        <thead>
+                            <tr>
+                                <th>Oda Adı</th>
+                                <th>Açıklaması</th>
+                                <th>Açılma tarihi</th>
+                                <th>Açan Kullanıcı</th>
+                                <th>Karşı Kullanıcı</th>
+                                <th>Eylem</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Oda Adı</th>
+                                <th>Açıklaması</th>
+                                <th>Açılma tarihi</th>
+                                <th>Açan Kullanıcı</th>
+                                <th>Karşı Kullanıcı</th>
+                                <th>Eylem</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.RoomDescription)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.RoomStartDate)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.TartIshUser.UserName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.TartIshUser1.UserName)</td>
+                                    <td>@Html.ActionLink("Odayı Kaldır", "RemoveRoom", new { id = item.Id })</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

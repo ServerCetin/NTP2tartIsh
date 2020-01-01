@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "ChatDeneme";
+    Layout = "~/Views/Shared/_HomeWFooterAndSideBar.cshtml";
+}
+
+
+    <section class="bg0 p-b-60 m-t-20">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-md-7 col-lg-8 p-b-80">
+                    <div class="p-r-10 p-r-0-sr991">
+
+                        <div class="tab01-head how2 how2-cl2 bocl12 flex-s-c m-r-10 m-r-0-sr991">
+                            <!-- Brand tab -->
+                            <h3 class="f1-m-2 cl13 tab01-title">
+                                İletişim
+                            </h3>
+
+                        </div>
+                        <br>
+                        <form name="form1">
+                            <input type="hidden" value="@ViewBag.UserName" name="username">
+                            <textarea class="bo-1-rad-3 bocl13 size-a-19 f1-s-13 cl5 plh6 p-rl-18 m-b-20" name="msg"></textarea>
+                            <a href="#" onclick="submitChat()">Send</a><br><br><br><br>
+                            <div id="chatlogs">
+                                Chat log bekleniyor
+                            </div>
+                          
+                        </div>
+                </div>
+
+                
+                <script>
+	                function submitChat(){
+		                if(form1.msg.value == ''){
+			                alert("All asdsadas");
+		                }
+
+		                var username = 'admin';
+		                var msg = form1.msg.value;
+		                var xmlhttp = new XMLHttpRequest();
+
+		                xmlhttp.onreadystatechange = function(){
+			                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+				                document.getElementById('chatlogs').innerHTML = xmlhttp.responseText;
+
+			                }
+		                }
+
+		                xmlhttp.open('GET','insert?username='+username+'&msg='+msg,true);
+		                xmlhttp.send();
+                     }
+                </script>

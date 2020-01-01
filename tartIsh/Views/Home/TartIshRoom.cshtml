@@ -1,0 +1,86 @@
+﻿@model tartIsh.Models.TartIshRoom
+@{
+    ViewBag.Title = "Tartış Odası";
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+    <section class="bg0 p-t-10">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8 p-b-30">
+                    <div class="p-r-10 p-r-0-sr991">
+                        <!-- Blog Detail -->
+                        <div class="p-b-70">
+                            <a href="#" class="f1-s-10 cl2 hov-cl10 trans-03 text-uppercase">
+                                @Model.Category.CategoryName
+                            </a>
+
+                            <h3 class="f1-l-3 cl2 p-b-16 p-t-33 respon2">
+                                @Model.Title
+                            </h3>
+
+
+
+                            <div class="wrap-pic-max-w p-b-30">
+                                <img src="images/blog-list-01.jpg" alt="IMG">
+                            </div>
+
+                            <div class="flex-wr-s-s p-b-40">
+                                <span class="f1-s-3 cl8 m-r-15">
+                                    Tartışmayı açan:
+                                    <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                        @Model.TartIshUser.UserName
+                                    </a>
+                                </span>
+                                <span class="f1-s-3 cl8 m-r-15">
+                                    Rakibi:
+                                    <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                        @Model.TartIshUser1.UserName
+                                    </a>
+                                </span>
+
+                                <span class="f1-s-3 cl8 m-r-15">
+                                    İzleyiciler: <b>@Model.ViewersCount</b>
+                                </span>
+
+
+                            </div>
+
+                            <p class="f1-s-11 cl6 p-b-25">
+                               @Model.RoomDescription
+                            </p>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-md-10 col-lg-4 p-b-30" ">
+                    <div class="p-l-10 p-rl-0-sr991" style="position: fixed;width:400px;>
+                        <!-- Category -->
+                        <div class="p-b-60">
+                            <div class="how2 how2-cl4 flex-s-c">
+                                <h3 class="f1-m-2 cl3 tab01-title">
+                                    Sohbet Alanı
+                                </h3>
+                            </div>
+
+                            <ul class="p-t-35">
+
+                                @foreach (var item in @Model.Chat.ChatMessages)
+                                {
+                                    <li>
+                                        <b>@item.TartIshUser.UserName</b> @item.ChatMessageText
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+

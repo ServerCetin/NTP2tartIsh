@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Öneriler";
+    Layout = "~/Views/Shared/_AdminContent.cshtml";
+}
+
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        Öneriler
+                    </h2>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                            <thead>
+                                <tr>
+                                    <th>Öneriyi Sunan</th>
+                                    <th>Başlık</th>
+                                    <th>İçerik</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Öneriyi Sunan</th>
+                                    <th>Başlık</th>
+                                    <th>İçerik</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @for (int x = 0; x < ViewBag.GetAllUserSuggestions.GetLength(0); x++)
+                                {
+                                    <tr>
+                                        <td>@ViewBag.GetAllUserSuggestions[x, 1]</td>
+                                        <td>@ViewBag.GetAllUserSuggestions[x, 2]</td>
+                                        <td>@ViewBag.GetAllUserSuggestions[x, 3]</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
